@@ -1,4 +1,4 @@
-package com.project.secondDisplay;
+package com.project.secondDisplay.main.controller;
 
 import java.util.Locale;
 

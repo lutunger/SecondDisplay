@@ -11,7 +11,8 @@
 			<%-- 로그인 모달창 --%>
 			<button type="button" class="btn btn-primary btn-sm" 
 			data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
-			<a class="btn btn-primary btn-sm" href="">회원가입</a>
+			<button type="button" class="btn btn-primary btn-sm" 
+			data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
 		</div>
 	</div>
 </nav>
@@ -23,7 +24,7 @@
 			<div>Second<i class="fa-solid fa-shirt"></i>Display</div>
 		</a>
 		<form class="d-flex my-auto" role="search">
-			<input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+			<input class="form-control me-2" type="search" placeholder="상품명 검색" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 		<div>
@@ -43,5 +44,8 @@
 
 </nav>
 
-<!-- login Modal -->
+<!-- 로그인 모달 -->
+<jsp:include page="/WEB-INF/views/user/login.jsp"/>
+
+<%-- 회원가입 모달 --%>
 <jsp:include page="/WEB-INF/views/user/login.jsp"/>

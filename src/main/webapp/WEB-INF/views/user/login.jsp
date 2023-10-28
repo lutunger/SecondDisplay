@@ -16,13 +16,13 @@
       </div>
 
       <div class="modal-body px-5 pt-0 pb-4">
-		<form class="">
+		<form action="/login" method="post">
 			<div class="form-floating mb-3">
-				<input type="email" class="form-control rounded-3" id="floatingInput" placeholder="Id">
+				<input type="text" class="form-control rounded-3" id="floatingInput" placeholder="Id" name="userId">
 				<label for="floatingInput">Id</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+				<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="userPw">
 				<label for="floatingPassword">Password</label>
 			</div>
 			<div class="form-check text-start my-3">
