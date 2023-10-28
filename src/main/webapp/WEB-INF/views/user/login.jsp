@@ -18,7 +18,9 @@
       <div class="modal-body px-5 pt-0 pb-4">
 		<form action="/login" method="post">
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control rounded-3" id="floatingInput" placeholder="Id" name="userId">
+				<input type="text" class="form-control rounded-3" 
+				id="floatingInput" placeholder="Id" name="userId"
+				value="${cookie.saveId.value}">
 				<label for="floatingInput">Id</label>
 			</div>
 			<div class="form-floating mb-3">
@@ -26,10 +28,16 @@
 				<label for="floatingPassword">Password</label>
 			</div>
 			<div class="form-check text-start my-3">
-				<input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">
+
+				<c:if test="${not empty cookie.saveId.value}" >
+					<c:set var="save" value="checked"/>
+				</c:if>
+
+				<input class="form-check-input" type="checkbox" id="saveId" name="saveId" ${save}>
+				<label class="form-check-label" for="saveId">
 					ID 기억하기
 				</label>
+
 			</div>
 			<button class="w-100 mt-2 mb-0 btn btn-lg rounded-3 btn-primary" type="submit">로그인</button>
 		</form>

@@ -8,11 +8,18 @@
 		
 		</div>
 		<div>
-			<%-- 로그인 모달창 --%>
-			<button type="button" class="btn btn-primary btn-sm" 
-			data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
-			<button type="button" class="btn btn-primary btn-sm" 
-			data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+			<c:choose>
+				<c:when test="${empty sessionScope.loginUser}">
+					<button type="button" class="btn btn-primary btn-sm" 
+					data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+					<button type="button" class="btn btn-primary btn-sm" 
+					data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+				</c:when>
+				<c:otherwise>
+					<button type="button" class="btn btn-primary btn-sm">마이페이지</button>
+					<a class="btn btn-primary btn-sm" href="/logout">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </nav>
