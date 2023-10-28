@@ -24,7 +24,7 @@
 			
 			<div class="d-flex justify-content-between align-items-center">
 				<h4>최신매물</h4>
-				<a href="">더보기</a>
+				<a class="link-primary link-underline-opacity-0"href="">더보기</a>
 			</div>
 			
 			<div class="mt-3 row row-cols-5 row-gap-3">
