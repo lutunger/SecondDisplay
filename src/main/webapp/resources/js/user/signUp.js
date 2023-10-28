@@ -11,12 +11,12 @@ userId.addEventListener("input", () => {
 
     if (userId.value.trim().length == 0) {
         userId.value = "";
-        userIdMessage.innerText = "영문자로 시작하는 영문자 또는 숫자 4~20자로 시작하는 아이디를 입력해주세요";
+        userIdMessage.innerText = "영문자 또는 숫자 4~20글자 아이디를 입력해주세요";
         userIdMessage.classList.remove("confirm", "error");
         checkObj.userId = false;
         return
     }
-    const regEx = /^[a-zA-Z][a-zA-Z0-9]{0,19}$/;
+    const regEx = /^[a-zA-Z0-9]{4,20}$/;
 
     if (regEx.test(userId.value)) {
         fetch('/signUpCheck/id?id=' + userId.value)

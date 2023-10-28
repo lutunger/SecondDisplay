@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -62,6 +63,18 @@ public class UserContorller {
 		return "redirect:/";
 	}
 	
+	
+	@GetMapping("/signUpCheck/id")
+	@ResponseBody
+	public int checkId(String id) {
+		return service.checkId(id);
+	}
+	
+	@GetMapping("/signUpCheck/nickname")
+	@ResponseBody
+	public int checkNickname(String nickname) {
+		return service.checkNickname(nickname);
+	}
 	
 	@PostMapping("/signUp")
 	public String signUp(User inputUser
