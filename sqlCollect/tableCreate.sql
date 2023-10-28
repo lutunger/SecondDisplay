@@ -1,6 +1,7 @@
 CREATE DATABASE seconddisplay;
+USE seconddisplay;
 
-CREATE TABLE seconddisplay.`user` (
+CREATE TABLE `user` (
 	`USER_NO`	INT	NOT NULL	AUTO_INCREMENT PRIMARY KEY	COMMENT '회원번호',
 	`USER_ID`	VARCHAR(100)	NOT NULL	COMMENT '회원아이디',
 	`USER_PW`	VARCHAR(100)	NOT NULL	COMMENT '회원 비밀번호(암호화 적용)',
@@ -9,7 +10,7 @@ CREATE TABLE seconddisplay.`user` (
 	`ENROLL_DT`	DATETIME	NOT NULL	DEFAULT NOW()	COMMENT '회원가입일'
 );
 
-CREATE TABLE seconddisplay.`goods` (
+CREATE TABLE `goods` (
 	`GOODS_NO`	INT	NOT NULL	AUTO_INCREMENT PRIMARY KEY	COMMENT '상품게시글 번호',
 	`USER_NO`	INT	NOT NULL	COMMENT '회원번호',
 	`CATEGORY_NO`	INT	NOT NULL	COMMENT '상품 카테고리 번호',
@@ -21,26 +22,26 @@ CREATE TABLE seconddisplay.`goods` (
 	`GOODS_STATUS`	CHAR(1)	NOT NULL	COMMENT '상품 상태(A:판매중 B:비공개  S:임시저장  D:삭제 E:판매완료 P:예약중)'
 );
 
-CREATE TABLE seconddisplay.`categories` (
+CREATE TABLE `categories` (
 	`CATEGORY_NO`	INT	NOT NULL	AUTO_INCREMENT PRIMARY KEY	COMMENT '상품 카테고리 번호',
 	`CATEGORY_NAME`	VARCHAR(20)	NOT NULL	COMMENT '카테고리 이름'
 );
 
-CREATE TABLE seconddisplay.`files` (
+CREATE TABLE `files` (
 	`FILE_NO`	INT	NOT NULL	AUTO_INCREMENT PRIMARY KEY	COMMENT '파일 번호',
 	`GOODS_NO`	INT	NOT NULL	COMMENT '상품게시글 번호',
 	`FILE_ORDER`	INT	NOT NULL	COMMENT '파일 순서(1번이 썸네일)',
 	`FILE_PATH`	VARCHAR(500)	NOT NULL	COMMENT '파일경로'
 );
 
-CREATE TABLE seconddisplay.`chat_room` (
+CREATE TABLE `chat_room` (
 	`CHATROOM_NO`	INT	NOT NULL	AUTO_INCREMENT	PRIMARY KEY 	COMMENT '채팅방 번호',
 	`GOODS_NO`	INT	NOT NULL	COMMENT '상품게시글 번호',
 	`USER_NO`	INT	NOT NULL	COMMENT '구매 회원 번호',
 	`CREATE_DT`	DATETIME	NOT NULL	DEFAULT NOW()	COMMENT '채팅방 생성일자'
 );
 
-CREATE TABLE seconddisplay.`chat_message` (
+CREATE TABLE `chat_message` (
 	`MESSAGE_NO`	INT	NOT NULL	AUTO_INCREMENT 	PRIMARY KEY	COMMENT '채팅 메세지 번호',
 	`CHATROOM_NO`	INT	NOT NULL	COMMENT '채팅방 번호',
 	`USER_NO`	INT	NOT NULL	COMMENT '구매 회원 번호',
@@ -50,52 +51,52 @@ CREATE TABLE seconddisplay.`chat_message` (
 );
 
 
-ALTER TABLE seconddisplay.`goods` ADD CONSTRAINT `FK_user_TO_goods_1` FOREIGN KEY (
+ALTER TABLE `goods` ADD CONSTRAINT `FK_user_TO_goods_1` FOREIGN KEY (
 	`USER_NO`
 )
 REFERENCES `user` (
 	`USER_NO`
 );
 
-ALTER TABLE seconddisplay.`goods` ADD CONSTRAINT `FK_categories_TO_goods_1` FOREIGN KEY (
+ALTER TABLE `goods` ADD CONSTRAINT `FK_categories_TO_goods_1` FOREIGN KEY (
 	`CATEGORY_NO`
 )
-REFERENCES seconddisplay.`categories` (
+REFERENCES `categories` (
 	`CATEGORY_NO`
 );
 
-ALTER TABLE seconddisplay.`files` ADD CONSTRAINT `FK_goods_TO_files_1` FOREIGN KEY (
+ALTER TABLE `files` ADD CONSTRAINT `FK_goods_TO_files_1` FOREIGN KEY (
 	`GOODS_NO`
 )
-REFERENCES seconddisplay.`goods` (
+REFERENCES `goods` (
 	`GOODS_NO`
 );
 
-ALTER TABLE seconddisplay.`chat_room` ADD CONSTRAINT `FK_goods_TO_chat_room_1` FOREIGN KEY (
+ALTER TABLE `chat_room` ADD CONSTRAINT `FK_goods_TO_chat_room_1` FOREIGN KEY (
 	`GOODS_NO`
 )
-REFERENCES seconddisplay.`goods` (
+REFERENCES `goods` (
 	`GOODS_NO`
 );
 
-ALTER TABLE seconddisplay.`chat_room` ADD CONSTRAINT `FK_user_TO_chat_room_1` FOREIGN KEY (
+ALTER TABLE `chat_room` ADD CONSTRAINT `FK_user_TO_chat_room_1` FOREIGN KEY (
 	`USER_NO`
 )
-REFERENCES seconddisplay.`user` (
+REFERENCES `user` (
 	`USER_NO`
 );
 
-ALTER TABLE seconddisplay.`chat_message` ADD CONSTRAINT `FK_chat_room_TO_chat_message_1` FOREIGN KEY (
+ALTER TABLE `chat_message` ADD CONSTRAINT `FK_chat_room_TO_chat_message_1` FOREIGN KEY (
 	`CHATROOM_NO`
 )
-REFERENCES seconddisplay.`chat_room` (
+REFERENCES `chat_room` (
 	`CHATROOM_NO`
 );
 
-ALTER TABLE seconddisplay.`chat_message` ADD CONSTRAINT `FK_chat_room_TO_chat_message_2` FOREIGN KEY (
+ALTER TABLE `chat_message` ADD CONSTRAINT `FK_chat_room_TO_chat_message_2` FOREIGN KEY (
 	`USER_NO`
 )
-REFERENCES seconddisplay.`chat_room` (
+REFERENCES `chat_room` (
 	`USER_NO`
 );
 
