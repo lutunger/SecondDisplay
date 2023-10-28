@@ -19,13 +19,15 @@
 		<form action="/login" method="post">
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control rounded-3" 
-				id="floatingInput" placeholder="Id" name="userId"
-				value="${cookie.saveId.value}">
-				<label for="floatingInput">Id</label>
+				id="loginId" placeholder="Id" name="userId"
+				value="${cookie.saveId.value}"
+				autocomplete="off">
+				<label for="loginId">Id</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="userPw">
-				<label for="floatingPassword">Password</label>
+				<input type="password" class="form-control rounded-3" 
+				id="loginPw" placeholder="Password" name="userPw">
+				<label for="loginPw">Password</label>
 			</div>
 			<div class="form-check text-start my-3">
 

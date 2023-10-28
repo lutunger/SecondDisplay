@@ -17,6 +17,25 @@
 		WHERE USER_STATUS = 'A'
 		AND USER_ID = #{userId}
 	</select>
+	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(USER_ID)
+		FROM user
+		WHERE USER_ID = #{userId}	
+	</select>
+	
+	<select id="checkNickname" resultType="int">
+		SELECT COUNT(USER_NM)
+		FROM user
+		WHERE USER_ID = #{userId}	
+	</select>
+	
+	<insert id="signUp" parameterType="User">
+		INSERT INTO user
+		(USER_ID, USER_PW, USER_NM)
+		VALUES
+		(#{userId}, #{userPw}, #{nickname})	
+	</insert>
 		
 </mapper>
 

@@ -63,4 +63,26 @@ public class UserContorller {
 	}
 	
 	
+	@PostMapping("/signUp")
+	public String signUp(User inputUser
+						, RedirectAttributes ra) {
+		
+		int result = service.signUp(inputUser);
+		String message = null;
+		
+		if(result > 0) {
+			message = inputUser.getNickname() + "님의 가입을 환영합니다.";
+			
+		} else {
+			message = "죄송합니다 잠시후 다시 시도해주세요";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
 }

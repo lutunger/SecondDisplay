@@ -16,5 +16,17 @@ public class UserDAO {
 		
 		return sqlSession.selectOne("userMapper.login", inputUser);
 	}
+
+	public int checkId(String id) {
+		return sqlSession.selectOne("userMapper.checkId", id);
+	}
+
+	public int checkNickname(String nickname) {
+		return sqlSession.selectOne("userMapper.checkNickname", nickname);
+	}
+
+	public int signUp(User inputUser) {
+		return sqlSession.insert("userMapper.signUp", inputUser);
+	}
 	
 }

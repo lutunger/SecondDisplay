@@ -13,7 +13,7 @@
 					<button type="button" class="btn btn-primary btn-sm" 
 					data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
 					<button type="button" class="btn btn-primary btn-sm" 
-					data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+					data-bs-toggle="modal" data-bs-target="#signUp">회원가입</button>
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn btn-primary btn-sm">마이페이지</button>
@@ -35,9 +35,25 @@
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 		<div>
-			<button type="button" class="btn btn-primary btn-sm">판매하기</button>
-			<button type="button" class="btn btn-primary btn-sm">내상점</button>
-			<button type="button" class="btn btn-primary btn-sm">채팅</button>
+			<c:choose>
+				<c:when test="${empty sessionScope.loginUser}">
+					<button type="button" class="btn btn-primary btn-sm"
+					data-bs-toggle="modal" data-bs-target="#loginModal">
+					판매하기</button>
+					<button type="button" class="btn btn-primary btn-sm"
+					data-bs-toggle="modal" data-bs-target="#loginModal"
+					>내상점</button>
+					<button type="button" class="btn btn-primary btn-sm"
+					data-bs-toggle="modal" data-bs-target="#loginModal"
+					>채팅</button>
+				</c:when>
+				<c:otherwise>
+					<button type="button" class="btn btn-primary btn-sm">판매하기</button>
+					<button type="button" class="btn btn-primary btn-sm">내상점</button>
+					<button type="button" class="btn btn-primary btn-sm">채팅</button>
+
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 
@@ -55,4 +71,4 @@
 <jsp:include page="/WEB-INF/views/user/login.jsp"/>
 
 <%-- 회원가입 모달 --%>
-<jsp:include page="/WEB-INF/views/user/login.jsp"/>
+<jsp:include page="/WEB-INF/views/user/signUp.jsp"/>
