@@ -19,7 +19,7 @@ userId.addEventListener("input", () => {
     const regEx = /^[a-zA-Z0-9]{4,20}$/;
 
     if (regEx.test(userId.value)) {
-        fetch('/signUpCheck/id?id=' + userId.value)
+        fetch('/check/id?id=' + userId.value)
             .then(response => response.text())
             .then(count => {
                 if (count == 0) {
@@ -117,7 +117,7 @@ userNickname.addEventListener("input", () => {
     }
     const regEx = /^[가-힣\w\d]{2,10}$/;
     if(regEx.test(userNickname.value)){ 
-        fetch("/signUpCheck/nickname?nickname="+userNickname.value)
+        fetch("/check/nickname?nickname="+userNickname.value)
         .then(resp => resp.text())  
         .then(count => {
             if(count == 0){ 

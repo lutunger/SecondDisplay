@@ -4,21 +4,18 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.secondDisplay.user.model.dto.User;
-
 @Repository
-public class UserDAO {
+public class CheckDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public User login(User inputUser) {
-		
-		return sqlSession.selectOne("userMapper.login", inputUser);
+	public int checkId(String id) {
+		return sqlSession.selectOne("checkMapper.checkId", id);
 	}
 
-	public int signUp(User inputUser) {
-		return sqlSession.insert("userMapper.signUp", inputUser);
+	public int checkNickname(String nickname) {
+		return sqlSession.selectOne("checkMapper.checkNickname", nickname);
 	}
 	
 }

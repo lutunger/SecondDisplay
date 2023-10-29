@@ -64,17 +64,7 @@ public class UserContorller {
 	}
 	
 	
-	@GetMapping("/signUpCheck/id")
-	@ResponseBody
-	public int checkId(String id) {
-		return service.checkId(id);
-	}
-	
-	@GetMapping("/signUpCheck/nickname")
-	@ResponseBody
-	public int checkNickname(String nickname) {
-		return service.checkNickname(nickname);
-	}
+
 	
 	@PostMapping("/signUp")
 	public String signUp(User inputUser
@@ -97,7 +87,7 @@ public class UserContorller {
 	
 	@GetMapping(value = {"/myPage", "/myPage/nickname"})
 	public String forwardMyPage() {
-		return "/myPage/myPage-nickname";
+		return "/myPage/myPage-change";
 	}
 	
 	

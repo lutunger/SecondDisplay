@@ -30,16 +30,6 @@ public class UserServiceImpl implements UserService {
 		return loginUser;
 	}
 
-	@Override
-	public int checkId(String id) {
-		return dao.checkId(id);
-	}
-
-	@Override
-	public int checkNickname(String nickname) {
-		return dao.checkNickname(nickname);
-	}
-	
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int signUp(User inputUser) {
@@ -48,6 +38,8 @@ public class UserServiceImpl implements UserService {
 		int result = dao.signUp(inputUser);
 		return result;
 	}
+
+
 	
 	
 	

@@ -2,10 +2,10 @@ package com.project.secondDisplay.user.model.service;
 
 import com.project.secondDisplay.user.model.dto.User;
 
-public interface UserService {
+public interface CheckService {
 	
-	User login(User inputUser);
+	int checkNickname(String nickname);
 
-	int signUp(User inputUser);
-	
+	int checkId(String id);
+
 }
