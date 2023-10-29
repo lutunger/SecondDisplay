@@ -12,6 +12,8 @@
 <body>
 <body>
 
+	${sessionScope.loginUser}
+
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
 

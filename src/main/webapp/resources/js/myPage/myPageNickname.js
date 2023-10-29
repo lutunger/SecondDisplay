@@ -46,3 +46,4 @@ nicknameFrm.addEventListener("submit", e => {
     }
 })
 
+document.getElementById("sideNickname").classList.add("active");

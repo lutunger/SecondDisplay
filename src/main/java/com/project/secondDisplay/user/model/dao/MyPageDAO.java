@@ -16,4 +16,22 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateNickname", inputUser);
 	}
 
+
+	public int changePw(String changePw, int userNo) {
+		
+		User user = new User();
+		user.setUserNo(userNo);
+		user.setUserPw(changePw);
+		
+		return sqlSession.update("myPageMapper.changePw", user);
+	}
+
+	public int secession(int userNo) {
+		return sqlSession.update("myPageMapper.secession", userNo);
+	}
+	
+	public String selectEncPw(int userNo) {
+		return sqlSession.selectOne("myPageMapper.selectEncPw", userNo);
+	}
+
 }

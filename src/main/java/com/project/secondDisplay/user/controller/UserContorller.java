@@ -58,7 +58,7 @@ public class UserContorller {
 	}
 	
 	@GetMapping("/logout")
-	public String logout(SessionStatus status, HttpSession session) {
+	public String logout(SessionStatus status) {
 		status.setComplete();
 		return "redirect:/";
 	}

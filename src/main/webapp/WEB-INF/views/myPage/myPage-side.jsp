@@ -9,7 +9,8 @@
     마이페이지 메뉴
   </div>
   <ul class="list-group list-group-flush">
-    <a class="list-group-item" href="">개인정보변경</a>
-    <a class="list-group-item" href="">탈퇴</a>
+    <a class="list-group-item" href="/myPage/nickname" id="sideNickname">닉네임 변경</a>
+    <a class="list-group-item" href="/myPage/password" id="sidePassword">비밀번호 변경</a>
+    <a class="list-group-item" href="/myPage/secession" id="sideSecession">탈퇴</a>
   </ul>
 </div>

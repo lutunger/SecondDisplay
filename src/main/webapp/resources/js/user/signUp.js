@@ -160,3 +160,4 @@ document.getElementById("signUpFrm").addEventListener("submit", e => {
         }
     }
 });
+

@@ -14,7 +14,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
 
-	<main class="container-md mt-3 content-w d-flex justify-content-between">
+	<main class="container mt-3 content-w d-flex justify-content-between">
 		
 		<jsp:include page="/WEB-INF/views/myPage/myPage-side.jsp"/>
 
@@ -34,7 +34,6 @@
 							autocomplete="off"
 							disabled readonly
 							>
-							<input type="hidden" name="userId" value="${sessionScope.loginUser.userId}">
 							<label for="id">아이디</label>
 						</div>
 
