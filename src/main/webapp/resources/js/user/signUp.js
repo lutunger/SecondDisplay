@@ -156,7 +156,7 @@ document.getElementById("signUpFrm").addEventListener("submit", e => {
             }
             document.getElementById(key).focus;
             e.preventDefault();
-            turn; 
+            return; 
         }
     }
 });

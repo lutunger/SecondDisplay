@@ -22,68 +22,41 @@
 			<div class="card shadow-sm rounded">
 				<div class="card-body p-5">
 					
-					<h1>개인정보변경</h1>
-					<p>닉네임과 비밀번호를 변경할 수 있어요</p>
+					<h1>닉네임 변경</h1>
+					<p>닉네임을 변경할 수 있어요</p>
 					
-					<form action="/myPage/change" method="post">
+					<form action="/myPage/nickname" method="post" id="nicknameFrm">
 
 						<div class="form-floating mb-3 mt-4">
 							<input type="text" class="form-control rounded-3" 
-							id="Id" placeholder="아이디" name="userId"
+							id="id" placeholder="아이디"
 							value="${sessionScope.loginUser.userId}"
 							autocomplete="off"
 							disabled readonly
 							>
-							<label for="Id">아이디</label>
+							<input type="hidden" name="userId" value="${sessionScope.loginUser.userId}">
+							<label for="id">아이디</label>
 						</div>
 
 						<div class="form-floating mb-3">
 							<input type="text" class="form-control rounded-3" 
-							id="changeNickname" placeholder="닉네임" name="userNickname"
-							vlaue="${sessionScope.loginUser.userNickname}"
+							id="changeNickname" placeholder="닉네임" name="nickname"
+							value="${sessionScope.loginUser.nickname}"
 							autocomplete="off"
-							disabled readonly
 							>
 							<label for="changeNickname">닉네임</label>
-						</div>
-
-						<div class="form-floating mb-3">
-							<input type="text" class="form-control rounded-3" 
-							id="loginId" placeholder="Id" name="userId"
-							value="${sessionScope.loginUser.userId}"
-							autocomplete="off"
-							disabled readonly
-							>
-							<label for="loginId">Id</label>
-						</div>
-
-						<div class="form-floating mb-3">
-							<input type="text" class="form-control rounded-3" 
-							id="loginId" placeholder="Id" name="userId"
-							value="${sessionScope.loginUser.userId}"
-							autocomplete="off"
-							disabled readonly
-							>
-							<label for="loginId">Id</label>
-						</div>
-
-						<div class="form-floating mb-3">
-							<input type="text" class="form-control rounded-3" 
-							id="loginId" placeholder="Id" name="userId"
-							value="${sessionScope.loginUser.userId}"
-							autocomplete="off"
-							disabled readonly
-							>
-							<label for="loginId">Id</label>
+								<div class="form-text" id="ChangeNickMessage">
+								닉네임 변경이 가능합니다.
+								<br>
+								한글,영어,숫자로만 2~10글자
+							</div>
 						</div>
 						
 						<div class="d-flex justify-content-center">
-							<button class="w-25 mt-2 mb-0 btn btn-lg rounded-3 btn-primary" type="submit">변경하기</button>
+							<button class="w-50 mt-3 mx-auto btn btn-lg rounded-3 btn-primary" type="submit">변경</button>
 						</div>
 
 					</form>
-
-
 				</div>
 			</div>
 		
@@ -95,6 +68,6 @@
 
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
-	<script src="/resources/js/myPage/myPage.js"></script>
+	<script src="/resources/js/myPage/myPageNickname.js"></script>
 </body>
 </html>

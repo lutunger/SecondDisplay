@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="mt-3 row row-cols-5 row-gap-3">
-				<%for(int i = 0; i < 30; i++){ %>
+				<%for(int i = 0; i < 10; i++){ %>
 					<div class="col ">
 						<div class="card">
 							<img src="https://dummyimage.com/150x150/000/fff" class="card-img-top" style="width: 100%;">

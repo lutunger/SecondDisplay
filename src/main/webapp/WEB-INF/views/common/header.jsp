@@ -16,7 +16,7 @@
 					data-bs-toggle="modal" data-bs-target="#signUp">회원가입</button>
 				</c:when>
 				<c:otherwise>
-					<a type="button" class="btn btn-primary btn-sm" href="/myPage">마이페이지</a>
+					<a type="button" class="btn btn-primary btn-sm" href="/myPage/nickname">마이페이지</a>
 					<a class="btn btn-primary btn-sm" href="/logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
