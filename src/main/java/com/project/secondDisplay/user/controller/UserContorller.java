@@ -95,6 +95,10 @@ public class UserContorller {
 		return "redirect:/";
 	}
 	
+	@GetMapping(value = {"/myPage", "/myPage/nickname"})
+	public String forwardMyPage() {
+		return "/myPage/myPage-nickname";
+	}
 	
 	
 	

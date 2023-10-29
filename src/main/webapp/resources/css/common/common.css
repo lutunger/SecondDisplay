@@ -1,8 +1,18 @@
-.body-w{
+.content-w{
     width: 960px;
 }
 
-.footer-height{
+main{
+    height: auto;
+    min-height: calc(100% - 160px - 96px);
+    /* 
+        160px = header  
+        80px = footer
+        16px = main margin-top
+    */
+}
+
+footer{
     height: 80px;
 }
 

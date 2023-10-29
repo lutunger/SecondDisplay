@@ -16,7 +16,7 @@
 
 	<main class="container-md mt-3 content-w">
 		
-        
+        <jsp:include page="/WEB-INF/views/myPage/myPage-side.jsp"/>
 
 	</main>
 	

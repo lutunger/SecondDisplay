@@ -3,7 +3,7 @@
 
 
 <nav class="navbar bg-body-tertiary border-bottom">
-	<div class="body-w container-fluid">
+	<div class="content-w container-fluid">
 		<div>
 		
 		</div>
@@ -16,7 +16,7 @@
 					data-bs-toggle="modal" data-bs-target="#signUp">회원가입</button>
 				</c:when>
 				<c:otherwise>
-					<button type="button" class="btn btn-primary btn-sm">마이페이지</button>
+					<a type="button" class="btn btn-primary btn-sm" href="/myPage">마이페이지</a>
 					<a class="btn btn-primary btn-sm" href="/logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
@@ -25,8 +25,9 @@
 </nav>
 
 
-<nav class="navbar bg-body-tertiary sticky-top  border-bottom">
-	<div class="body-w container-fluid">
+<nav class="navbar bg-body-tertiary sticky-top border-bottom d-flex flex-column">
+
+	<div class="content-w container-lg">
 		<a class="navbar-brand" href="/">
 			<div>Second<i class="fa-solid fa-shirt"></i>Display</div>
 		</a>
@@ -57,7 +58,7 @@
 		</div>
 	</div>
 
-	<div class="body-w container-fluid mt-3 mb-2">
+	<div class="content-w container-lg mt-3 mb-2">
 		<div>
 			<button type="button" class="btn btn-primary btn-sm">남성의류</button>
 			<button type="button" class="btn btn-primary btn-sm">여성의류</button>
@@ -67,8 +68,6 @@
 
 </nav>
 
-<!-- 로그인 모달 -->
 <jsp:include page="/WEB-INF/views/user/login.jsp"/>
 
-<%-- 회원가입 모달 --%>
 <jsp:include page="/WEB-INF/views/user/signUp.jsp"/>

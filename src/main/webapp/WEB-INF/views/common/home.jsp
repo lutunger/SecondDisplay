@@ -10,11 +10,12 @@
 	<link rel="icon" href="/resources/images/common/icons8-cloth-32.png" type="image/x-icon">
 </head>
 <body>
+<body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
 
-	<main class="container-md mt-3 body-w">
+	<main class="mx-auto mt-3 content-w">
 		
 		<div>
 			<img src="/resources/images/common/banner.png" style="width:100%;">
@@ -42,7 +43,7 @@
 
 			</div>
 			
-			<div class="d-flex justify-content-center mt-5">
+			<div class="d-flex justify-content-center my-5">
 				<button type="button" class="btn btn-primary m-0">더보기</button>
 			</div>
 
@@ -52,6 +53,7 @@
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+</body>
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
 </body>
