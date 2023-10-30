@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:set var="goodsList" value="${map.goodsList}"/>
+
 <html>
 <head>
 	<title>secondDisplay</title>
@@ -25,26 +27,27 @@
 			
 			<div class="d-flex justify-content-between align-items-center">
 				<h4>최신매물</h4>
-				<a class="link-primary link-underline-opacity-0"href="">더보기</a>
+				<a class="link-primary link-underline-opacity-0" href="list/All">더보기</a>
 			</div>
 			
 			<div class="mt-3 row row-cols-5 row-gap-3">
-				<%for(int i = 0; i < 10; i++){ %>
-					<div class="col ">
-						<div class="card">
-							<img src="https://dummyimage.com/150x150/000/fff" class="card-img-top" style="width: 100%;">
-							<div class="card-body">
-								<p class="card-text">제품이름</p>
-								<p class="card-text">가격</p>
+				<c:forEach items="${goodsList}" var="goods">
+					<a class="link-underline link-underline-opacity-0" href="/products/${goods.goodsNo}">
+						<div class="col">
+							<div class="card">
+								<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
+								<div class="card-body">
+									<p class="card-text text-truncate">${goods.goodsTitle}</p>
+									<p class="card-text">${goods.goodsPrice}원</p>
+								</div>
 							</div>
 						</div>
-					</div>
-				<%} %>
-
+					</a>
+				</c:forEach>
 			</div>
 			
 			<div class="d-flex justify-content-center my-5">
-				<button type="button" class="btn btn-primary m-0">더보기</button>
+				<A class="btn btn-primary m-0" href="/list/All">더보기</A>
 			</div>
 
 		</section>

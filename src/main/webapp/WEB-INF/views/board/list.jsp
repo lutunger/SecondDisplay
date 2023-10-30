@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:set var="goodsList" value="${map.goodsList}"/>
+
 <html>
 <head>
 	<title>secondDisplay</title>
@@ -10,10 +12,8 @@
 	<link rel="icon" href="/resources/images/common/icons8-cloth-32.png" type="image/x-icon">
 </head>
 <body>
-
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
-
 	<main class="container mt-3 mb-5 content-w">
 		
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -26,17 +26,19 @@
 		<h3>카테고리</h3>
 
 		<div class="mt-3 row row-cols-5 row-gap-3">
-			<%for(int i = 0; i < 20; i++){ %>
-				<div class="col ">
-					<div class="card">
-						<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
-						<div class="card-body">
-							<p class="card-text">제품이름</p>
-							<p class="card-text">가격</p>
+			<c:forEach items="${goodsList}" var="goods">
+				<a class="link-underline link-underline-opacity-0" href="/products/${goods.goodsNo}">
+					<div class="col">
+						<div class="card">
+							<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
+							<div class="card-body">
+								<p class="card-text text-truncate">${goods.goodsTitle}</p>
+								<p class="card-text">${goods.goodsPrice}원</p>
+							</div>
 						</div>
 					</div>
-				</div>
-			<%} %>
+				</a>
+			</c:forEach>
 		</div>
 
 	</main>

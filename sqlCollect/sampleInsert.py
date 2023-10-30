@@ -20,7 +20,7 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # 가짜 데이터 생성기 생성
-fake = Faker()
+fake = Faker('ko_KR')
 
 # 상품 카테고리 번호와 카테고리 이름
 categories = [
@@ -42,7 +42,7 @@ for _ in range(1000):
     category_no, category_name = random.choice(categories)  # 랜덤 카테고리 선택
     goods_title = fake.catch_phrase()  # 가짜 상품 제목 생성
     goods_descr = fake.paragraph(nb_sentences=3)  # 가짜 상품 설명 생성
-    goods_price = random.randint(10000, 1000000)  # 가짜 상품 가격 (10000에서 1000000 사이의 랜덤)
+    goods_price = random.randint(1, 100) * 10000  # 가짜 상품 가격 (10000에서 1000000 사이의 랜덤)
     view_count = random.randint(0, 1000)  # 조회수 (0에서 1000 사이의 랜덤)
 
     # SQL 쿼리 실행

@@ -16,6 +16,7 @@
 	<!-- DTO클래스의 패키지명 + 클래스명 작성하는 것이 불편하기 때문에 짧은 별칭 부여 -->
 	<typeAliases>
 		<typeAlias type="com.project.secondDisplay.user.model.dto.User" alias="User"/>
+		<typeAlias type="com.project.secondDisplay.board.model.dto.Goods" alias="Goods"/>
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -23,6 +24,7 @@
 		<mapper resource="/mappers/user-mapper.xml"/>
 		<mapper resource="/mappers/check-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/board-mapper.xml"/>
 	</mappers>
 
 </configuration>
