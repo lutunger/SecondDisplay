@@ -29,3 +29,6 @@ MANIFEST.MF
 .factorypath
 settings.json
 jdbc.properties
+
+#환경설정
+.env
