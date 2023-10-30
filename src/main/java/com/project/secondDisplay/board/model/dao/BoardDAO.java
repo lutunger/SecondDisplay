@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
 
 @Repository
@@ -14,15 +15,20 @@ public class BoardDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	public Category selectCategory(int categoryNo) {
+		return sqlSession.selectOne("boardMapper.selectCategory", categoryNo);
+	}
 
-	public List<Goods> selectGoodsList(int i) {
-		RowBounds rowBounds = new RowBounds(0, 20);
-		return sqlSession.selectList("boardMapper.selectGoodsList", null, rowBounds);
+	public List<Goods> selectGoodsList(int categoryNo, int cp) {
+		RowBounds rowBounds = new RowBounds(cp, 20);
+		return sqlSession.selectList("boardMapper.selectGoodsList", categoryNo, rowBounds);
 	}
 
 	public Goods selectGoodsDetail(int goodsNo) {
 		return sqlSession.selectOne("boardMapper.selectGoodsDetail", goodsNo);
 	}
+
 	
 	
 	

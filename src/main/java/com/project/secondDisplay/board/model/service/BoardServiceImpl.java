@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.secondDisplay.board.model.dao.BoardDAO;
+import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
 
 @Service
@@ -17,9 +18,14 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO dao;
 	
 	@Override
-	public Map<String, Object> selectGoodsList(int categoryNo) {
+	public Category selectCategory(int categoryNo) {
+		return dao.selectCategory(categoryNo);
+	}
+
+	@Override
+	public Map<String, Object> selectGoodsList(int categoryNo, int cp) {
 		
-		List<Goods> goodsList = dao.selectGoodsList(1);
+		List<Goods> goodsList = dao.selectGoodsList(categoryNo, cp);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodsList", goodsList);

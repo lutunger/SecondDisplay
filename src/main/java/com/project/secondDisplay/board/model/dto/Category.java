@@ -11,8 +11,5 @@ public class Category {
 	
 	private int categoryNo;
 	private String categoryName;
-	private String categoryCode;
-	
-	
 	
 }

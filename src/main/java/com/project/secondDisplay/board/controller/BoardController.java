@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
 import com.project.secondDisplay.board.model.service.BoardService;
 
@@ -27,9 +28,12 @@ public class BoardController {
 								, Model model
 								) {
 		
-		Map<String, Object> goods = service.selectGoodsList(categoryNo);
+		Map<String, Object> goods = service.selectGoodsList(categoryNo, 0);
+		Category category = service.selectCategory(categoryNo);
 		
 		model.addAttribute("map", goods);
+		model.addAttribute("category", category);
+		
 		return "/board/list";
 	}
 	
@@ -40,7 +44,7 @@ public class BoardController {
 										, Model model){
 		
 		
-		Map<String, Object> goods = service.selectGoodsList(categoryNo);
+		Map<String, Object> goods = service.selectGoodsList(categoryNo, cp);
 		
 		return goods;
 	}

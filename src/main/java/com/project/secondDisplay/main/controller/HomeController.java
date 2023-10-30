@@ -18,7 +18,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		
-		Map<String, Object> goods = boardService.selectGoodsList(300);
+		Map<String, Object> goods = boardService.selectGoodsList(300, 0);
 		
 		model.addAttribute("map", goods);
 		

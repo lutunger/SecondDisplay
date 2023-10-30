@@ -19,16 +19,54 @@
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					1차보기
+					<c:choose>
+						<c:when test="${fn:startsWith(categoryNo, '1')}">
+							남성의류
+						</c:when>
+						<c:when test="${fn:startsWith(categoryNo, '2')}">
+							여성의류
+						</c:when>
+						<c:when test="${fn:startsWith(categoryNo, '3')}">
+							전체보기
+						</c:when>
+					</c:choose>
 				</li>
-				<li class="breadcrumb-item">
-					2차보기
-				</li>
+				<c:choose>
+					<c:when test="${fn:endsWith(categoryNo, '1')}">
+						<li class="breadcrumb-item">
+							상의
+						</li>
+					</c:when>
+					<c:when test="${fn:endsWith(categoryNo, '2')}">
+						<li class="breadcrumb-item">
+							하의
+						</li>
+					</c:when>
+					<c:when test="${fn:endsWith(categoryNo, '3')}">
+						<li class="breadcrumb-item">
+							아우터
+						</li>
+					</c:when>
+					<c:when test="${fn:endsWith(categoryNo, '4')}">
+						<li class="breadcrumb-item">
+							악세서리
+						</li>
+					</c:when>
+					<c:when test="${fn:endsWith(categoryNo, '5')}">
+						<li class="breadcrumb-item">
+							기타
+						</li>
+					</c:when>
+				</c:choose>
+				
 			</ol>
 		</nav>
 
 		<h3>
-			전체보기
+			${category.categoryName}
+			<c:if test="${category.categoryName == null}">
+				전체보기
+			</c:if>
 		</h3>
 
 		<div class="board mt-3 row row-cols-5 row-gap-3">
@@ -46,6 +84,13 @@
 				</a>
 			</c:forEach>
 		</div>
+
+		<div class="d-flex justify-content-center my-5">
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+
 
 	</main>
 	

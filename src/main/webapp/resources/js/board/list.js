@@ -51,6 +51,10 @@ window.addEventListener('scroll', function() {
                     );
 
                 })
+                if(resqData.length < 20){
+                    $(".spinner-border").remove();
+                }
+
             },
 
             error: function(xhr, status, error) {
