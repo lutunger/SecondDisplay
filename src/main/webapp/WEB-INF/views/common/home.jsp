@@ -27,7 +27,7 @@
 			
 			<div class="d-flex justify-content-between align-items-center">
 				<h4>최신매물</h4>
-				<a class="link-primary link-underline-opacity-0" href="list/All">더보기</a>
+				<a class="link-primary link-underline-opacity-0" href="/category/300">더보기</a>
 			</div>
 			
 			<div class="mt-3 row row-cols-5 row-gap-3">
@@ -37,8 +37,8 @@
 							<div class="card">
 								<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
 								<div class="card-body">
-									<p class="card-text text-truncate">${goods.goodsTitle}</p>
-									<p class="card-text">${goods.goodsPrice}원</p>
+									<p class="card-text mb-1 text-truncate">${goods.goodsTitle}</p>
+									<p class="card-text"><b>${goods.goodsPrice}</b>원</p>
 								</div>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div class="d-flex justify-content-center my-5">
-				<A class="btn btn-primary m-0" href="/list/All">더보기</A>
+				<A class="btn btn-primary m-0" href="/category/300">더보기</A>
 			</div>
 
 		</section>
@@ -58,6 +58,5 @@
 
 </body>
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
 </body>
 </html>

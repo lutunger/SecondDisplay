@@ -17,7 +17,7 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO dao;
 	
 	@Override
-	public Map<String, Object> selectGoodsList(String categoryName) {
+	public Map<String, Object> selectGoodsList(int categoryNo) {
 		
 		List<Goods> goodsList = dao.selectGoodsList(1);
 		

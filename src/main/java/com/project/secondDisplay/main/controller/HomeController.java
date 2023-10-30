@@ -1,6 +1,5 @@
 package com.project.secondDisplay.main.controller;
 
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,9 @@ public class HomeController {
 	private BoardService boardService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Model model) {
 		
-		String categoryName = null;
-		
-		Map<String, Object> goods = boardService.selectGoodsList(categoryName);
+		Map<String, Object> goods = boardService.selectGoodsList(300);
 		
 		model.addAttribute("map", goods);
 		

@@ -60,9 +60,37 @@
 
 	<div class="content-w container-lg mt-3 mb-2">
 		<div>
-			<button type="button" class="btn btn-primary btn-sm">남성의류</button>
-			<button type="button" class="btn btn-primary btn-sm">여성의류</button>
-			<a class="btn btn-primary btn-sm" href="/list/All">전체보기</a>
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+					남성의류
+				</button>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="/category/101">상의</a></li>
+					<li><a class="dropdown-item" href="/category/102">하의</a></li>
+					<li><a class="dropdown-item" href="/category/103">아우터</a></li>
+					<li><a class="dropdown-item" href="/category/104">악세서리</a></li>
+					<li><a class="dropdown-item" href="/category/105">기타</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="/category/100">남성의류 전체</a></li>
+				</ul>
+			</div>
+
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+					여성의류
+				</button>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="/category/201">상의</a></li>
+					<li><a class="dropdown-item" href="/category/202">하의</a></li>
+					<li><a class="dropdown-item" href="/category/203">아우터</a></li>
+					<li><a class="dropdown-item" href="/category/204">악세서리</a></li>
+					<li><a class="dropdown-item" href="/category/205">기타</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="/category/200">여성의류 전체</a></li>
+				</ul>
+			</div>
+
 		</div>
 	</div>
 
