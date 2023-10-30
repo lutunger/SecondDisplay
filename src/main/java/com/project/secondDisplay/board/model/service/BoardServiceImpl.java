@@ -27,4 +27,11 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 	}
 
+	@Override
+	public Goods selectGoodsDetail(int goodsNo) {
+		return dao.selectGoodsDetail(goodsNo);
+	}
+	
+	
+	
 }

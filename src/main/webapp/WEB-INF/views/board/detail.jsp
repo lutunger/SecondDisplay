@@ -54,22 +54,22 @@
 			<div class="card-body p-5">
 
 				<div class="card-text border-bottom pb-3 mb-3">
-					<div class="fs-3">상품명</div>
-					<div class="fs-2"><b>000</b>원</div>
+					<div class="fs-3">${goods.goodsTitle}</div>
+					<div class="fs-2"><b>${goods.goodsPrice}</b>원</div>
 				</div>
 
 				<table class="table table-borderless w-75">
 					<tr>
 						<td>조회수</td>
-						<td>4231413</td>
+						<td>${goods.viewCount}</td>
 					</tr>
 					<tr>
 						<td>올린시간</td>
-						<td>4123-124-1234</td>
+						<td>${goods.enrollDate}</td>
 					</tr>
 					<tr>
 						<td>거래상태</td>
-						<td>판매중</td>
+						<td>${goods.goodsStatusName}</td>
 					</tr>
 				</table>
 
@@ -89,7 +89,7 @@
 				상품정보
 			</p>
 			<p class="card-text">
-				블라블라
+				${goods.goodsDescr}
 			</p>
 		</div>
 	</div>

@@ -20,6 +20,12 @@
 		ORDER BY GOODS_NO DESC		
 	</select>
 	
+	<select id="selectGoodsDetail" resultMap="goods_rm">
+		SELECT *
+		FROM goods
+		WHERE GOODS_NO = ${goodsNo}
+	</select>
+	
 </mapper>
 
 

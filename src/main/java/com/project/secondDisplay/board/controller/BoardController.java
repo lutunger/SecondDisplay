@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.project.secondDisplay.board.model.dto.Goods;
 import com.project.secondDisplay.board.model.service.BoardService;
 
 @SessionAttributes({"loginUser"})
@@ -48,7 +49,8 @@ public class BoardController {
 	public String goodsDetail(@PathVariable("goodsNo") int goodsNo
 								,Model model) {
 		
-		
+		Goods goods = service.selectGoodsDetail(goodsNo);
+		model.addAttribute("goods", goods);
 		
 		return "/board/detail";
 	}

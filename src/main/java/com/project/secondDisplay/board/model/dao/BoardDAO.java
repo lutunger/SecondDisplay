@@ -16,9 +16,12 @@ public class BoardDAO {
 	private SqlSessionTemplate sqlSession;
 
 	public List<Goods> selectGoodsList(int i) {
-		
 		RowBounds rowBounds = new RowBounds(0, 20);
 		return sqlSession.selectList("boardMapper.selectGoodsList", null, rowBounds);
+	}
+
+	public Goods selectGoodsDetail(int goodsNo) {
+		return sqlSession.selectOne("boardMapper.selectGoodsDetail", goodsNo);
 	}
 	
 	
