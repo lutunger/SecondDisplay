@@ -75,7 +75,6 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
 	<script src="/resources/js/myPage/myPagePassword.js"></script>
 </body>
 </html>

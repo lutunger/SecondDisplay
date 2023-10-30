@@ -62,7 +62,7 @@
 		<div>
 			<button type="button" class="btn btn-primary btn-sm">남성의류</button>
 			<button type="button" class="btn btn-primary btn-sm">여성의류</button>
-			<button type="button" class="btn btn-primary btn-sm">전체보기</button>
+			<a class="btn btn-primary btn-sm" href="/list">전체보기</a>
 		</div>
 	</div>
 
