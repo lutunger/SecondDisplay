@@ -46,7 +46,7 @@ window.addEventListener('scroll', function() {
                     board.append(
                         $("<a>", {
                             "class": "link-underline link-underline-opacity-0",
-                            "href": "/products/" + item.goodsNo
+                            "href": "/detail/" + item.goodsNo
                         }).append(divElement)
                     );
 

@@ -44,4 +44,13 @@ public class BoardController {
 		return goods;
 	}
 	
+	@GetMapping("/detail/{goodsNo}")
+	public String goodsDetail(@PathVariable("goodsNo") int goodsNo
+								,Model model) {
+		
+		
+		
+		return "/board/detail";
+	}
+	
 }

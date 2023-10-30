@@ -4,9 +4,10 @@
 
 main{
     height: auto;
-    min-height: calc(100% - 160px - 96px);
+    min-height: calc(100% - 167px - 96px);
     /* 
-        160px = header  
+        48px = header 1
+        119px = header 2
         80px = footer
         16px = main margin-top
     */

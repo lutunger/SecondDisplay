@@ -33,7 +33,7 @@
 
 		<div class="board mt-3 row row-cols-5 row-gap-3">
 			<c:forEach items="${goodsList}" var="goods">
-				<a class="link-underline link-underline-opacity-0" href="/products/${goods.goodsNo}">
+				<a class="link-underline link-underline-opacity-0" href="/detail/${goods.goodsNo}">
 					<div class="col">
 						<div class="card">
 							<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
