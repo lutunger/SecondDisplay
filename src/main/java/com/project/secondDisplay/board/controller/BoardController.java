@@ -59,4 +59,24 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
+	@GetMapping("/add")
+	public String goodsAddForward() {
+		
+		return "/board/add";
+	}
+	
+	@PostMapping("/add")
+	public String goodsAdd(Goods goods
+							) {
+			System.out.println(goods);
+		return "redirect:/manage";
+	}
+	
+	
+	
+	@GetMapping("/manage")
+	public String goodsManage() {
+		return "/board/manage";
+	}
+	
 }

@@ -38,7 +38,10 @@
 								<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
 								<div class="card-body">
 									<p class="card-text mb-1 text-truncate">${goods.goodsTitle}</p>
-									<p class="card-text"><b>${goods.goodsPrice}</b>원</p>
+									<div class="d-flex justify-content-between">
+										<span class="card-text"><b>${goods.goodsPrice}</b>원</span>
+										<span class="badge text-bg-primary">판매중</span>
+									</div>
 								</div>
 							</div>
 						</div>

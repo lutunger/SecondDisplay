@@ -14,7 +14,8 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	
+
+
 	<main class="container mt-3 mb-5 content-w">
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
@@ -77,7 +78,10 @@
 							<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
 							<div class="card-body">
 								<p class="card-text mb-1 text-truncate">${goods.goodsTitle}</p>
-								<span class="card-text"><b>${goods.goodsPrice}</b>원</span>
+								<div class="d-flex justify-content-between">
+									<span class="card-text"><b>${goods.goodsPrice}</b>원</span>
+									<span class="badge text-bg-primary">판매중</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -85,12 +89,15 @@
 			</c:forEach>
 		</div>
 
-		<div class="d-flex justify-content-center my-5">
-			<div class="spinner-border text-primary" role="status">
-				<span class="visually-hidden">Loading...</span>
-			</div>
-		</div>
+	
 
+		<c:if test="${goodsList.size() == 20}">		
+			<div class="d-flex justify-content-center my-5">
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</c:if>
 
 	</main>
 	

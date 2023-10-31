@@ -31,7 +31,7 @@
 		<a class="navbar-brand" href="/">
 			<div>Second<i class="fa-solid fa-shirt"></i>Display</div>
 		</a>
-		<form class="d-flex my-auto" role="search">
+		<form class="d-flex my-auto" role="search"\>
 			<input class="form-control me-2" type="search" placeholder="상품명 검색" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
@@ -43,16 +43,15 @@
 					판매하기</button>
 					<button type="button" class="btn btn-primary btn-sm"
 					data-bs-toggle="modal" data-bs-target="#loginModal"
-					>내상점</button>
+					>내상품</button>
 					<button type="button" class="btn btn-primary btn-sm"
 					data-bs-toggle="modal" data-bs-target="#loginModal"
 					>채팅</button>
 				</c:when>
 				<c:otherwise>
-					<button type="button" class="btn btn-primary btn-sm">판매하기</button>
-					<button type="button" class="btn btn-primary btn-sm">내상점</button>
+					<a type="button" class="btn btn-primary btn-sm" href="/add">판매하기</a>
+					<a type="button" class="btn btn-primary btn-sm" href="/manage">내상품</a>
 					<button type="button" class="btn btn-primary btn-sm">채팅</button>
-
 				</c:otherwise>
 			</c:choose>
 		</div>
