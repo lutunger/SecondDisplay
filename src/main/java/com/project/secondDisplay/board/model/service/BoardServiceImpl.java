@@ -55,5 +55,11 @@ public class BoardServiceImpl implements BoardService{
 		return dao.selectManageList(userNo, cp);
 	}
 	
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int deleteGoods(Goods goods) {
+		return dao.deleteTarget(goods);
+	}
+	
 	
 }

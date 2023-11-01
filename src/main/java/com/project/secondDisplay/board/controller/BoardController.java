@@ -3,6 +3,8 @@ package com.project.secondDisplay.board.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -106,6 +108,25 @@ public class BoardController {
 		return "/board/manage";
 	}
 	
+	@GetMapping("/delete/{goodsNo}")
+	public String goodsDelete(@SessionAttribute(value = "loginUser") User loginUser
+							, @PathVariable(value="goodsNo") int goodsNo
+							, RedirectAttributes ra) {
+		Goods goods = new Goods();
+		goods.setUserNo(loginUser.getUserNo());
+		goods.setGoodsNo(goodsNo);
+		int result = service.deleteGoods(goods);
+		String message = null;
+		if(result > 0) {
+			message = "삭제 성공";
+		}else {
+			message = "삭제 실패, 다시 시도해주세요";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:/manage";
+	}
 	
 	
 	

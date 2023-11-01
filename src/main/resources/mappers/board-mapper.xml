@@ -71,6 +71,13 @@
 		ORDER BY GOODS_NO DESC
 	</select>
 	
+	<delete id="deleteTarget" parameterType="goods">
+		DELETE 
+		FROM goods
+		WHERE USER_NO = #{userNo}
+		AND GOODS_NO = #{goodsNo}		
+	</delete>
+	
 </mapper>
 
 

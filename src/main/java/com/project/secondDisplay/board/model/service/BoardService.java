@@ -20,6 +20,8 @@ public interface BoardService {
 	
 	List<Goods> selectManageList(int userNo, int cp);
 
+	int deleteGoods(Goods goods);
+
 
 
 }

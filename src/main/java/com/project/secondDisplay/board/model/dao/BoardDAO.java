@@ -46,5 +46,9 @@ public class BoardDAO {
 		return goodsList;
 	}
 
+	public int deleteTarget(Goods goods) {
+		return sqlSession.delete("boardMapper.deleteTarget", goods);
+	}
+
 	
 }
