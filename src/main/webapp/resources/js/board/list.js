@@ -34,14 +34,22 @@ window.addEventListener('scroll', function () {
                                 $("<p>", {
                                     "class": "card-text mb-1 text-truncate",
                                     "text": item.goodsTitle
-                                }),
-                                $("<span>", {
-                                    "class": "card-text",
-                                    "html": "<b>" + item.goodsPrice + "</b>원"
-                                })
+                                }).append(
+                                    $("<div>",{
+                                        "class" : "d-flex justify-content-between"
+                                    }).append(
+                                    $("<span>", {
+                                        "class": "card-text",
+                                        "html": "<b>" + item.goodsPrice + "</b>원"
+                                    }),
+                                    $("<span>", {
+                                        "class": "badge text-bg-primary",
+                                        "text": "판매중"
+                                    })
+                                )
                             )
                         )
-                    );
+                    ))
 
                     board.append(
                         $("<a>", {

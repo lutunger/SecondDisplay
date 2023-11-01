@@ -40,7 +40,17 @@
 									<p class="card-text mb-1 text-truncate">${goods.goodsTitle}</p>
 									<div class="d-flex justify-content-between">
 										<span class="card-text"><b>${goods.goodsPrice}</b>원</span>
-										<span class="badge text-bg-primary">판매중</span>
+										<c:choose>
+											<c:when test="${goods.goodsStatus=='A'}">
+												<span class="badge text-bg-primary">판매중</span>
+											</c:when>
+											<c:when test="${goods.goodsStatus=='P'}">
+												<span class="badge text-bg-success">예약중</span>
+											</c:when>
+											<c:when test="${goods.goodsStatus=='E'}">
+												<span class="badge text-bg-danger">거래종료</span>
+											</c:when>
+										</c:choose>
 									</div>
 								</div>
 							</div>
