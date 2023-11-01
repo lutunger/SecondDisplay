@@ -85,7 +85,7 @@ public class BoardController {
 		String path = "redirect:";
 		if(result > 0) {
 			message = "상품이 등록 되었습니다.";
-			path += "/manage";
+			path += "/detail/" + goods.getGoodsNo();
 		}else {
 			message = "상품 등록이 실패했습니다. 다시 확인해주세요";
 		}
@@ -107,6 +107,39 @@ public class BoardController {
 		
 		return "/board/manage";
 	}
+	
+	@GetMapping("/edit/{goodsNo}")
+	public String goodsEdit(@SessionAttribute(value = "loginUser") User loginUser
+							, @PathVariable(value="goodsNo") int goodsNo
+							, Model model
+							, RedirectAttributes ra) {
+		Goods goods = new Goods();
+		goods.setUserNo(loginUser.getUserNo());
+		goods.setGoodsNo(goodsNo);
+		Goods goodsTarget = service.selectEditGoods(goods);
+		model.addAttribute("goods", goodsTarget);
+		return "/board/edit";
+	}
+	
+	@PostMapping("/edit")
+	public String updateGoods(@SessionAttribute(value = "loginUser") User loginUser
+								,Goods goods
+								,RedirectAttributes ra) {
+		goods.setUserNo(loginUser.getUserNo());
+		int result = service.updateGoods(goods);
+		String message = null;
+		String path = "redirect:/";
+		if(result > 0) {
+			path +=  "detail/" + goods.getGoodsNo();
+			message ="수정성공";
+		}else {
+			path += "manage";
+			message = "수정실패, 확인 후 다시 시도해주세요";
+		}
+		ra.addFlashAttribute("message", message);
+		return path;
+	}
+	
 	
 	@GetMapping("/delete/{goodsNo}")
 	public String goodsDelete(@SessionAttribute(value = "loginUser") User loginUser

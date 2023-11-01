@@ -20,7 +20,13 @@ public interface BoardService {
 	
 	List<Goods> selectManageList(int userNo, int cp);
 
+	Goods selectEditGoods(Goods goods);
+
+	int updateGoods(Goods goods);
+	
 	int deleteGoods(Goods goods);
+
+
 
 
 

@@ -71,6 +71,21 @@
 		ORDER BY GOODS_NO DESC
 	</select>
 	
+	<select id="selectEditGoods" resultMap="goods_rm">
+		SELECT *
+		FROM goods
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{userNo}
+	</select>
+	
+	<update id="updateGoods" parameterType="goods">
+		UPDATE goods
+		SET	CATEGORY_NO = #{categoryNo}, GOODS_TITLE = #{goodsTitle}, 
+			GOODS_DESCR = #{goodsDescr}, GOODS_PRICES = #{goodsPrice},
+			GOODS_STATUS = #{goodsStatus} 
+		WHERE GOODS_NO = #{goodsNo} 
+	</update>
+	
 	<delete id="deleteTarget" parameterType="goods">
 		DELETE 
 		FROM goods

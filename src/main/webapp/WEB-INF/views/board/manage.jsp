@@ -19,7 +19,7 @@
 		<nav class="navbar border-bottom mb-3 pb-3">
 			<div>
 				<a type="button" class="btn btn-primary btn-sm" href="/add">상품등록</a>
-				<a type="button" class="btn btn-primary btn-sm" href="/shop">상품관리</a>
+				<a type="button" class="btn btn-primary btn-sm" href="/manage">상품관리</a>
 			</div>
 		</nav>
 		
@@ -48,6 +48,7 @@
 									</a>
 								</td>
 								<td><b>${goods.goodsPrice}</b>원</td>
+							
 								<td>
 									<a class="btn btn-primary" href="/edit/${goods.goodsNo}">수정</a>
 									<button class="delete btn btn-primary" href="/delete/${goods.goodsNo}" data-target="${goods.goodsNo}">삭제</button>

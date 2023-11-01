@@ -23,15 +23,15 @@
 		</nav>
 
 		<h1>상품등록</h1>
-		<form action="/add" method="post" >
+		<form action="/edit" method="post" >	
 			<table class="table text-center align-middle">
-
-
+				<input type="hidden" name="goodsNo" value="${goods.goodsNo}">
 				<tr>
 					<td>상품명</td>
 					<td>
 					<input type="text" class="form-control" 
 					name="goodsTitle"
+					value="${goods.goodsTitle}"
 					required>
 					</td>
 				</tr>
@@ -41,8 +41,21 @@
 					<td class="input-group">
 						<input type="number" class="form-control text-end border-end-0" 
 						name="goodsPrice"
+						value="${goods.goodsPrice}"
 						required>
 						<span class="input-group-text bg-transparent">원</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						거래상태
+					</td>
+					<td>
+						<select id="status" class="form-select w-25" name="goodsStatus" value="${goods.goodsStatus}">
+							<option value="A">판매중</option>
+							<option value="P">예약중</option>
+							<option value="E">판매완료</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -59,7 +72,8 @@
 							<option value="04">악세서리</option>
 							<option value="05">기타</option>
 						</select>
-						<input type="hidden" id="categoryNo" name="categoryNo">
+						<input type="hidden" id="categoryNo" 
+						name="categoryNo" value="${goods.categoryNo}">
 					</td>
 				</tr>
 				<tr>
@@ -68,7 +82,7 @@
 						<textarea class="form-control"
 						rows="5" style="resize: none;" 
 						name="goodsDescr"
-						required></textarea>
+						required>${goods.goodsDescr}</textarea>
 					</td>
 				</tr>
 
@@ -85,6 +99,6 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
-	<script src="/resources/js/board/add.js"></script>
+	<script src="/resources/js/board/edit.js"></script>
 </body>
 </html>

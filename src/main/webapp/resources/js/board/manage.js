@@ -16,9 +16,8 @@ for (let i = 1; i <= pageCount; i++) {
 }
 
 $('.delete').on("click", (e) => {
-    let deleteBtn = confirm("정말 삭제하시겠습니까?")
     const target = e.target.dataset.target
-    if(deleteBtn){
+    if(confirm("정말 삭제하시겠습니까?")){
         location.replace('/delete/' + target);
     }
 })

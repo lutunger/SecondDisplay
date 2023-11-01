@@ -46,9 +46,19 @@ public class BoardDAO {
 		return goodsList;
 	}
 
+	public Goods selectEditGoods(Goods goods) {
+		return sqlSession.selectOne("boardMapper.selectEditGoods", goods);
+	}
+	
+	public int updateGoods(Goods goods) {
+		return sqlSession.update("boardMapper.updateGoods", goods);
+	}
+	
 	public int deleteTarget(Goods goods) {
 		return sqlSession.delete("boardMapper.deleteTarget", goods);
 	}
+
+
 
 	
 }

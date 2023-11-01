@@ -121,7 +121,20 @@
 					</table>
 
 					<div class="goodsAction d-flex flex-row-reverse justify-content-center mt-5">
-						<a class="btn btn-primary btn-lg" href="#">채팅하기</a>
+						<c:choose>
+							<c:when test="${sessionScope.loginUser.userNo != goods.userNo}">
+								<a class="btn btn-primary btn-lg" href="#">채팅하기</a>
+							</c:when>
+							<c:when test="${sessionScope.loginUser.userNo == goods.userNo}">
+								<a class="btn btn-primary btn-lg" href="/edit/${goods.goodsNo}">수정하기</a>
+							</c:when>
+							<c:otherwise>
+								<a class="btn btn-secondary btn-lg" 
+								data-bs-toggle="modal" data-bs-target="#loginModal"
+								>채팅하기</a>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 
 				</div>
