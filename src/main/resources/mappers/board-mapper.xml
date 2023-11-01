@@ -39,7 +39,7 @@
 				<!-- none -->
 			</when>
 			<otherwise>
-				WHERE CATEGORY_NO = ${categoryNo}
+				WHERE CATEGORY_NO = #{categoryNo}
 			</otherwise>
 		</choose>
 		ORDER BY GOODS_NO DESC
@@ -48,7 +48,20 @@
 	<select id="selectGoodsDetail" resultMap="goods_rm">
 		SELECT *
 		FROM goods
-		WHERE GOODS_NO = ${goodsNo}
+		WHERE GOODS_NO = #{goodsNo}
+	</select>
+	
+	<insert id="insertGoods" parameterType="goods">
+		INSERT INTO goods
+		(USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICES)
+		VALUES
+		(#{userNo}, #{categoryNo}, #{goodsTitle}, #{goodsDescr}, #{goodsPrice})
+	</insert>
+	
+	<select id="selectManageList" resultMap="goods_rm">
+		SELECT *
+		FROM goods
+		WHERE USER_NO = #{userNo}
 	</select>
 	
 </mapper>

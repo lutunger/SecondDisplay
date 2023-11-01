@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.secondDisplay.board.model.dao.BoardDAO;
 import com.project.secondDisplay.board.model.dto.Category;
@@ -38,6 +39,16 @@ public class BoardServiceImpl implements BoardService{
 		return dao.selectGoodsDetail(goodsNo);
 	}
 	
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int insertGoods(Goods goods) {
+		return dao.insertGoods(goods);
+	}
+
+	@Override
+	public List<Goods> selectManageList(int userNo) {
+		return dao.selectManageList(userNo);
+	}
 	
 	
 }

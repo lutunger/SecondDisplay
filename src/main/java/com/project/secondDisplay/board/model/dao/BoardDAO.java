@@ -29,6 +29,20 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectGoodsDetail", goodsNo);
 	}
 
+	public int insertGoods(Goods goods) {
+		return sqlSession.insert("boardMapper.insertGoods", goods);
+	}
+
+	public List<Goods> selectManageList(int userNo) {
+		List<Goods> goodsList = sqlSession.selectList("boardMapper.selectManageList", userNo);
+		
+		for (Goods goods : goodsList) {
+			goods.statusNaming();
+		}
+		
+		return goodsList;
+	}
+
 	
 	
 	

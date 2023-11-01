@@ -1,5 +1,6 @@
 package com.project.secondDisplay.board.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
 import com.project.secondDisplay.board.model.service.BoardService;
+import com.project.secondDisplay.user.model.dto.User;
 
 @SessionAttributes({"loginUser"})
 @Controller
@@ -54,6 +58,7 @@ public class BoardController {
 								,Model model) {
 		
 		Goods goods = service.selectGoodsDetail(goodsNo);
+		goods.statusNaming();
 		model.addAttribute("goods", goods);
 		
 		return "/board/detail";
@@ -61,22 +66,42 @@ public class BoardController {
 	
 	@GetMapping("/add")
 	public String goodsAddForward() {
-		
 		return "/board/add";
 	}
 	
 	@PostMapping("/add")
 	public String goodsAdd(Goods goods
-							) {
-			System.out.println(goods);
-		return "redirect:/manage";
+							, @SessionAttribute(value = "loginUser") User loginUser
+							, RedirectAttributes ra)  {
+		
+		// img 삽입은 보류
+		System.out.println(goods);
+		goods.setUserNo(loginUser.getUserNo());
+		int result = service.insertGoods(goods);
+		
+		String message = null;
+		String path = "redirect:";
+		if(result > 0) {
+			message = "상품이 등록 되었습니다.";
+			path += "/manage";
+		}else {
+			message = "상품 등록이 실패했습니다. 다시 확인해주세요";
+		}
+		ra.addFlashAttribute("message", message);
+		return path;
 	}
-	
 	
 	
 	@GetMapping("/manage")
-	public String goodsManage() {
+	public String goodsManage(@SessionAttribute(value = "loginUser") User loginUser
+								, Model model) {
+		
+		List<Goods> goodsList = service.selectManageList(loginUser.getUserNo());
+		
+		model.addAttribute("goodsList", goodsList);
+		
 		return "/board/manage";
 	}
+
 	
 }

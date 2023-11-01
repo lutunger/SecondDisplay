@@ -36,16 +36,22 @@
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
-				<tr>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
-				</tr>
-				<tr>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
+				<c:forEach items="${goodsList}" var="goods">
+					<tr>
+						<td><img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100px;"></td>
+						<td>${goods.goodsStatusName}</td>
+						<td>
+							<a class="link-underline link-underline-opacity-0" href="/detail/${goods.goodsNo}">
+							${goods.goodsTitle}
+							</a>
+						</td>
+						<td><b>${goods.goodsPrice}</b>원</td>
+						<td>
+							<button>수정</button>
+							<button>삭제</button>
+						</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 

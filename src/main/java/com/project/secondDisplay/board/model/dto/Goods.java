@@ -20,26 +20,13 @@ public class Goods {
 	private String enrollDate;
 	private String goodsStatus;
 	private String goodsStatusName;
-//	
-//	public Goods(int goodsNo, int userNo, int categoryNo, String goodsTitle, String goodsDescr, int goodsPrice,
-//			int viewCount, String enrollDate, String goodsStatus) {
-//		super();
-//		this.goodsNo = goodsNo;
-//		this.userNo = userNo;
-//		this.categoryNo = categoryNo;
-//		this.goodsTitle = goodsTitle;
-//		this.goodsDescr = goodsDescr;
-//		this.goodsPrice = goodsPrice;
-//		this.viewCount = viewCount;
-//		this.enrollDate = enrollDate;
-//		this.goodsStatus = goodsStatus;
-//		
-////		if(goodsStatus.equals("A")) this.goodsStatusName = "판매중";
-////		if(goodsStatus.equals("B"))	this.goodsStatusName = "비공개";
-////		if(goodsStatus.equals("S"))	this.goodsStatusName = "임시저장";
-////		if(goodsStatus.equals("E"))	this.goodsStatusName = "판매완료";
-////		if(goodsStatus.equals("P"))	this.goodsStatusName = "예약중";
-//	}
-	
+
+	public void statusNaming() {
+	if(goodsStatus.equals("A")) this.goodsStatusName = "판매중";
+	if(goodsStatus.equals("B"))	this.goodsStatusName = "비공개";
+	if(goodsStatus.equals("S"))	this.goodsStatusName = "임시저장";
+	if(goodsStatus.equals("E"))	this.goodsStatusName = "판매완료";
+	if(goodsStatus.equals("P"))	this.goodsStatusName = "예약중";
+	}
 	
 }

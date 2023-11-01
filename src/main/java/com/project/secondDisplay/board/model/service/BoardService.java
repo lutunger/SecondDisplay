@@ -1,5 +1,6 @@
 package com.project.secondDisplay.board.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.project.secondDisplay.board.model.dto.Category;
@@ -12,6 +13,10 @@ public interface BoardService {
 	Map<String, Object> selectGoodsList(int categoryNo, int cp);
 
 	Goods selectGoodsDetail(int goodsNo);
+
+	int insertGoods(Goods goods);
+
+	List<Goods> selectManageList(int userNo);
 
 
 }

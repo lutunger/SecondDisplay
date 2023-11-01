@@ -18,7 +18,7 @@
 		<nav class="navbar border-bottom mb-3 pb-3">
 			<div>
 				<a class="btn btn-primary btn-sm" href="/add">상품등록</a>
-				<a class="btn btn-primary btn-sm" href="/shop">상품관리</a>
+				<a class="btn btn-primary btn-sm" href="/manage">상품관리</a>
 			</div>
 		</nav>
 
@@ -46,21 +46,21 @@
 					</td>
 				</tr>
 				<tr>
-					<%-- <td>카테고리</td>
+					<td>카테고리</td>
 					<td class="d-flex">
-						<select class="form-select" size="6" required>
+						<select class="form-select" size="6" id="category1" required>
 							<option value="1">남성의류</option>
 							<option value="2">여성의류</option>
 						</select>
-						<select class="form-select" size="6" required>
+						<select class="form-select" size="6" id="category2" required>
 							<option value="01">상의</option>
 							<option value="02">하의</option>
 							<option value="03">아우터</option>
 							<option value="04">악세서리</option>
 							<option value="05">기타</option>
 						</select>
-						<input type="hidden" name="categoryNo">
-					</td> --%>
+						<input type="hidden" id="categoryNo" name="categoryNo">
+					</td>
 				</tr>
 				<tr>
 					<td>설명</td>
