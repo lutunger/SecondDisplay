@@ -58,10 +58,17 @@
 		(#{userNo}, #{categoryNo}, #{goodsTitle}, #{goodsDescr}, #{goodsPrice})
 	</insert>
 	
+	<select id="selectManageListCount" resultType="_int">
+		SELECT COUNT(GOODS_NO)
+		FROM goods
+		WHERE USER_NO = #{userNo}		
+	</select>
+	
 	<select id="selectManageList" resultMap="goods_rm">
 		SELECT *
 		FROM goods
 		WHERE USER_NO = #{userNo}
+		ORDER BY GOODS_NO DESC
 	</select>
 	
 </mapper>

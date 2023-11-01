@@ -33,8 +33,15 @@ public class BoardDAO {
 		return sqlSession.insert("boardMapper.insertGoods", goods);
 	}
 
-	public List<Goods> selectManageList(int userNo) {
-		List<Goods> goodsList = sqlSession.selectList("boardMapper.selectManageList", userNo);
+	public int selectManageListCount(int userNo) {
+		return sqlSession.selectOne("boardMapper.selectManageListCount", userNo);
+	}
+	
+	public List<Goods> selectManageList(int userNo, int cp) {
+		
+		RowBounds rowBounds = new RowBounds((cp - 1) * 10, 10);
+		
+		List<Goods> goodsList = sqlSession.selectList("boardMapper.selectManageList", userNo, rowBounds);
 		
 		for (Goods goods : goodsList) {
 			goods.statusNaming();
@@ -42,6 +49,8 @@ public class BoardDAO {
 		
 		return goodsList;
 	}
+
+	
 
 	
 	

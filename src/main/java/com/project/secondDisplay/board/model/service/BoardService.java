@@ -16,7 +16,10 @@ public interface BoardService {
 
 	int insertGoods(Goods goods);
 
-	List<Goods> selectManageList(int userNo);
+	int selectManageListCount(int userNo);
+	
+	List<Goods> selectManageList(int userNo, int cp);
+
 
 
 }

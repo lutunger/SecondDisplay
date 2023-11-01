@@ -24,7 +24,6 @@
 		</nav>
 		
 		<h1>상품관리</h1>
-
 		<table class="table text-center align-middle border-top mt-3">
 			<thead>	
 				<tr>
@@ -55,11 +54,20 @@
 			</tbody>
 		</table>
 
+		<nav class="d-flex justify-content-center mt-4">
+			<ul class="pagination">
+				
+			</ul>
+		</nav>
+
 	</main>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="/resources/lib/jquery/jquery-3.7.1.min.js"></script>
-	<script src="/resources/js/board/add.js"></script>
+	<script>
+		const goodsListCount = ${goodsListCount}
+	</script>
+	<script src="/resources/js/board/manage.js"></script>
 </body>
 </html>

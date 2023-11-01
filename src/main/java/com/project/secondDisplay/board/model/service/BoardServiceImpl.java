@@ -46,8 +46,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<Goods> selectManageList(int userNo) {
-		return dao.selectManageList(userNo);
+	public int selectManageListCount(int userNo) {
+		return dao.selectManageListCount(userNo);
+	}
+
+	@Override
+	public List<Goods> selectManageList(int userNo, int cp) {
+		return dao.selectManageList(userNo, cp);
 	}
 	
 	

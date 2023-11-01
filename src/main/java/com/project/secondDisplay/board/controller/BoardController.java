@@ -94,14 +94,17 @@ public class BoardController {
 	
 	@GetMapping("/manage")
 	public String goodsManage(@SessionAttribute(value = "loginUser") User loginUser
+								, @RequestParam(value="cp", required = false, defaultValue = "1") int cp
 								, Model model) {
 		
-		List<Goods> goodsList = service.selectManageList(loginUser.getUserNo());
+		int goodsListCount = service.selectManageListCount(loginUser.getUserNo());
+		List<Goods> goodsList = service.selectManageList(loginUser.getUserNo(), cp);
 		
 		model.addAttribute("goodsList", goodsList);
+		model.addAttribute("goodsListCount", goodsListCount);
 		
 		return "/board/manage";
 	}
-
+	
 	
 }
