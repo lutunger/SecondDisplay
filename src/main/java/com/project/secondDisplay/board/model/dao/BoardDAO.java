@@ -38,21 +38,13 @@ public class BoardDAO {
 	}
 	
 	public List<Goods> selectManageList(int userNo, int cp) {
-		
 		RowBounds rowBounds = new RowBounds((cp - 1) * 10, 10);
-		
 		List<Goods> goodsList = sqlSession.selectList("boardMapper.selectManageList", userNo, rowBounds);
-		
 		for (Goods goods : goodsList) {
 			goods.statusNaming();
 		}
-		
 		return goodsList;
 	}
 
-	
-
-	
-	
 	
 }

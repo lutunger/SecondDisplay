@@ -24,39 +24,49 @@
 		</nav>
 		
 		<h1>상품관리</h1>
-		<table class="table text-center align-middle border-top mt-3">
-			<thead>	
-				<tr>
-					<th scope="col">이미지</th>
-					<th scope="col">판매상태</th>
-					<th scope="col">상품명</th>
-					<th scope="col">가격</th>
-					<th scope="col">기능</th>
-				</tr>
-			</thead>
-			<tbody class="table-group-divider">
-				<c:forEach items="${goodsList}" var="goods">
-					<tr>
-						<td><img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100px;"></td>
-						<td>${goods.goodsStatusName}</td>
-						<td>
-							<a class="link-underline link-underline-opacity-0" href="/detail/${goods.goodsNo}">
-							${goods.goodsTitle}
-							</a>
-						</td>
-						<td><b>${goods.goodsPrice}</b>원</td>
-						<td>
-							<button>수정</button>
-							<button>삭제</button>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		
+		<c:choose>
+			<c:when test="${not empty goodsList}">
+				<table class="table text-center align-middle border-top mt-3">
+					<thead>	
+						<tr>
+							<th scope="col">이미지</th>
+							<th scope="col">판매상태</th>
+							<th scope="col">상품명</th>
+							<th scope="col">가격</th>
+							<th scope="col">기능</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						<c:forEach items="${goodsList}" var="goods">
+							<tr>
+								<td><img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100px;"></td>
+								<td>${goods.goodsStatusName}</td>
+								<td>
+									<a class="link-underline link-underline-opacity-0" href="/detail/${goods.goodsNo}">
+									${goods.goodsTitle}
+									</a>
+								</td>
+								<td><b>${goods.goodsPrice}</b>원</td>
+								<td>
+									<a class="btn btn-primary" href="/edit/${goods.goodsNo}">수정</a>
+									<button class="delete btn btn-primary" href="/delete/${goods.goodsNo}" data-target="${goods.goodsNo}">삭제</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<div class ="text-center mt-5">
+					<h3>상품이 없습니다.</h3>
+				</div>
+			</c:otherwise>
+		</c:choose>
 
 		<nav class="d-flex justify-content-center mt-4">
 			<ul class="pagination">
-				
+
 			</ul>
 		</nav>
 
