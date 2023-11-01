@@ -59,8 +59,10 @@ public class BoardController {
 	public String goodsDetail(@PathVariable("goodsNo") int goodsNo
 								,Model model) {
 		
+		service.updateViewCount(goodsNo);
 		Goods goods = service.selectGoodsDetail(goodsNo);
 		goods.statusNaming();
+		
 		model.addAttribute("goods", goods);
 		
 		return "/board/detail";

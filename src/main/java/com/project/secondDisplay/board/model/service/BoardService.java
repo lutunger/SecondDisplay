@@ -12,8 +12,10 @@ public interface BoardService {
 
 	Map<String, Object> selectGoodsList(int categoryNo, int cp);
 
+	void updateViewCount(int goodsNo);
+	
 	Goods selectGoodsDetail(int goodsNo);
-
+	
 	int insertGoods(Goods goods);
 
 	int selectManageListCount(int userNo);
@@ -25,6 +27,7 @@ public interface BoardService {
 	int updateGoods(Goods goods);
 	
 	int deleteGoods(Goods goods);
+
 
 
 

@@ -25,6 +25,10 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectGoodsList", categoryNo, rowBounds);
 	}
 
+	public int updateViewCount(int goodsNo) {
+		return sqlSession.update("boardMapper.updateViewCount",goodsNo);
+	}
+	
 	public Goods selectGoodsDetail(int goodsNo) {
 		return sqlSession.selectOne("boardMapper.selectGoodsDetail", goodsNo);
 	}
@@ -57,6 +61,7 @@ public class BoardDAO {
 	public int deleteTarget(Goods goods) {
 		return sqlSession.delete("boardMapper.deleteTarget", goods);
 	}
+
 
 
 

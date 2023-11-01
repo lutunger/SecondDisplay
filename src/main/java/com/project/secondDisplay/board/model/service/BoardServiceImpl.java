@@ -35,10 +35,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public void updateViewCount(int goodsNo) {
+		dao.updateViewCount(goodsNo);
+	}
+	
+	@Override
 	public Goods selectGoodsDetail(int goodsNo) {
 		return dao.selectGoodsDetail(goodsNo);
 	}
 	
+
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int insertGoods(Goods goods) {

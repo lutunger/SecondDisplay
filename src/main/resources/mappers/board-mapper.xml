@@ -45,6 +45,12 @@
 		ORDER BY GOODS_NO DESC
 	</select>
 	
+	<update id="updateViewCount" parameterType="_int">
+		UPDATE goods
+		SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
+	
 	<select id="selectGoodsDetail" resultMap="goods_rm">
 		SELECT *
 		FROM goods
