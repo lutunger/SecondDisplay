@@ -51,7 +51,7 @@
 				<c:otherwise>
 					<a type="button" class="btn btn-primary btn-sm" href="/add">판매하기</a>
 					<a type="button" class="btn btn-primary btn-sm" href="/manage">내상품</a>
-					<button type="button" class="btn btn-primary btn-sm">채팅</button>
+					<a type="button" class="btn btn-primary btn-sm" href="/chat">채팅</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
