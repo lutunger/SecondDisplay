@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chatMapper">
+	
+	<resultMap type="User" id="user_rm">
+		<id property="userNo" column="USER_NO"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="userPw" column="USER_PW"/>
+		<result property="nickname" column="USER_NM"/>
+		<result property="status" column="USER_STATUS"/>
+		<result property="enrollDate" column="ENROLL_DT"/>
+	</resultMap>
+
+	<resultMap type="Goods" id="goods_rm">
+	    <id property="goodsNo" column="GOODS_NO"/>
+	    <result property="userNo" column="USER_NO"/>
+	    <result property="categoryNo" column="CATEGORY_NO"/>
+	    <result property="goodsTitle" column="GOODS_TITLE"/>
+	    <result property="goodsDescr" column="GOODS_DESCR"/>
+	    <result property="goodsPrice" column="GOODS_PRICES"/>
+	    <result property="viewCount" column="VIEW_COUNT"/>
+	    <result property="enrollDate" column="SELL_ENROLL_DT"/>
+	    <result property="goodsStatus" column="GOODS_STATUS"/>
+	</resultMap>
+	
+	<resultMap type="Room" id="room_rm">
+	 	<id property="chatRoomNo" column="CHATROOM_NO"/>
+	    <result property="goodsNo" column="GOODS_NO"/>
+	    <result property="user1No" column="USER1_NO"/>
+	    <result property="user2No" column="USER2_NO"/>
+	</resultMap>
+	
+	<resultMap type="Message" id="message_rm">
+	 	<id property="messageNo" column="MESSAGE_NO"/>
+	    <result property="chatRoomNo" column="CHATROOM_NO"/>
+	    <result property="senderUserNo" column="SENDER_USER_NO"/>
+	    <result property="receiverUserNo" column="RECEIVER_USER_NO"/>
+	    <result property="message" column="MESSAGE"/>
+	    <result property="messageSentDT" column="MESSAGE_SEND_DT"/>
+	    <result property="readMessage" column="READ_MESSAGE"/>
+	</resultMap>
+
+	<select id="selectRoomList" resultMap="room_rm">
+		SELECT *
+		FROM chat_room
+		WHERE USER1_NO = #{userNo}
+		OR USER2_NO = #{userNO}
+	</select>
+		
+		
+		
+</mapper>
+
+
+
+
+
+
+
+
+

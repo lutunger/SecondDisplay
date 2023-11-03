@@ -1,5 +1,8 @@
 package com.project.secondDisplay.board.model.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,17 +10,21 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.secondDisplay.board.model.dao.BoardDAO;
 import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
+import com.project.secondDisplay.board.model.dto.goodsImg;
+import com.project.secondDisplay.board.model.exception.FileUploadException;
+import com.project.secondDisplay.common.Util;
 
 @Service
-public class BoardServiceImpl implements BoardService{
-	
+public class BoardServiceImpl implements BoardService {
+
 	@Autowired
 	private BoardDAO dao;
-	
+
 	@Override
 	public Category selectCategory(int categoryNo) {
 		return dao.selectCategory(categoryNo);
@@ -25,12 +32,12 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public Map<String, Object> selectGoodsList(int categoryNo, int cp) {
-		
+
 		List<Goods> goodsList = dao.selectGoodsList(categoryNo, cp);
-		
+
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodsList", goodsList);
-		
+
 		return map;
 	}
 
@@ -38,17 +45,71 @@ public class BoardServiceImpl implements BoardService{
 	public void updateViewCount(int goodsNo) {
 		dao.updateViewCount(goodsNo);
 	}
-	
+
 	@Override
 	public Goods selectGoodsDetail(int goodsNo) {
 		return dao.selectGoodsDetail(goodsNo);
 	}
-	
 
-	@Transactional(rollbackFor = {Exception.class})
+	@Transactional(rollbackFor = { Exception.class })
 	@Override
-	public int insertGoods(Goods goods) {
-		return dao.insertGoods(goods);
+	public int insertGoods(Goods goods, List<MultipartFile> images, String webPath, String filePath)
+			throws IllegalStateException, IOException {
+
+		goods.setGoodsDescr(Util.XSSHandling(goods.getGoodsDescr()));
+		goods.setGoodsTitle(Util.XSSHandling(goods.getGoodsTitle()));
+
+		int goodsNo = dao.insertGoods(goods);
+
+		if (goodsNo > 0) {
+
+			List<goodsImg> uploadList = new ArrayList<goodsImg>();
+
+			for (int i = 0; i < images.size(); i++) {
+
+				if (images.get(i).getSize() > 0) {
+
+					goodsImg img = new goodsImg();
+
+					img.setGoodsNo(goodsNo);
+
+					img.setFileOrder(i);
+
+					String fileName = images.get(i).getOriginalFilename();
+
+					img.setFilePath(filePath + Util.fileRename(fileName));
+					
+					System.out.println(img.toString());
+					
+					uploadList.add(img);
+				}
+			}
+
+			System.out.println(uploadList.toString());
+			
+			if (!uploadList.isEmpty()) {
+				int result = dao.insertImgList(uploadList);
+
+				if (result == uploadList.size()) {
+
+					for (int i = 0; i < uploadList.size(); i++) {
+
+						int index = uploadList.get(i).getFileOrder();
+
+						images.get(index).transferTo(new File(uploadList.get(i).getFilePath()));
+
+					}
+
+				}
+
+			} else {
+				throw new FileUploadException();
+			}
+
+		}
+
+		return goodsNo;
+
 	}
 
 	@Override
@@ -60,24 +121,22 @@ public class BoardServiceImpl implements BoardService{
 	public List<Goods> selectManageList(int userNo, int cp) {
 		return dao.selectManageList(userNo, cp);
 	}
-	
-	
+
 	@Override
 	public Goods selectEditGoods(Goods goods) {
 		return dao.selectEditGoods(goods);
 	}
-	
-	@Transactional(rollbackFor = {Exception.class})
+
+	@Transactional(rollbackFor = { Exception.class })
 	@Override
 	public int updateGoods(Goods goods) {
 		return dao.updateGoods(goods);
 	}
 
-	@Transactional(rollbackFor = {Exception.class})
+	@Transactional(rollbackFor = { Exception.class })
 	@Override
 	public int deleteGoods(Goods goods) {
 		return dao.deleteTarget(goods);
 	}
-	
-	
+
 }

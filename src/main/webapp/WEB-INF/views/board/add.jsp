@@ -22,10 +22,42 @@
 			</div>
 		</nav>
 
+
+
 		<h1>상품등록</h1>
-		<form action="/add" method="post" >
+		<form action="/add" method="post" enctype="multipart/form-data">
 			<table class="table text-center align-middle">
 
+				<tr>
+					<td class="w-25">
+					이미지
+					</td>
+					<td class="d-flex justify-content-between">
+
+						<label for="img1">
+							<div class="imgbox position-relative border rounded-2">
+								<img src=""	class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img1">
+								<span class="badge text-bg-primary position-absolute top-0 start-0">썸네일</span>
+							</div>
+						</label>
+						
+						<label for="img2">
+							<div class="imgbox imgbox position-relative border rounded-2">
+								<img src="" class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img2">
+							</div>
+						</label>
+						
+						<label for="img3">
+							<div class="imgbox imgbox position-relative border rounded-2">
+								<img src="" class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img3">
+							</div>
+						</label>
+
+					</td>
+				</tr>
 
 				<tr>
 					<td>상품명</td>

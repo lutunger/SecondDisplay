@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
+import com.project.secondDisplay.board.model.dto.goodsImg;
 
 @Repository
 public class BoardDAO {
@@ -34,7 +35,13 @@ public class BoardDAO {
 	}
 
 	public int insertGoods(Goods goods) {
-		return sqlSession.insert("boardMapper.insertGoods", goods);
+		int result = sqlSession.insert("boardMapper.insertGoods", goods);
+		if(result > 0) result = goods.getGoodsNo();
+		return result;
+	}
+	
+	public int insertImgList(List<goodsImg> uploadList) {
+		return sqlSession.insert("boardMapper.insertImageList", uploadList);
 	}
 
 	public int selectManageListCount(int userNo) {
@@ -61,6 +68,8 @@ public class BoardDAO {
 	public int deleteTarget(Goods goods) {
 		return sqlSession.delete("boardMapper.deleteTarget", goods);
 	}
+
+
 
 
 

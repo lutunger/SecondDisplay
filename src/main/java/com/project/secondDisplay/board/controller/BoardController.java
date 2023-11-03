@@ -1,9 +1,10 @@
 package com.project.secondDisplay.board.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.websocket.server.PathParam;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.secondDisplay.board.model.dto.Category;
@@ -76,20 +78,26 @@ public class BoardController {
 	@PostMapping("/add")
 	public String goodsAdd(Goods goods
 							, @SessionAttribute(value = "loginUser") User loginUser
-							, RedirectAttributes ra)  {
+							, @RequestParam(value="images", required=false) List<MultipartFile> images
+							, HttpSession session
+							, RedirectAttributes ra) throws IllegalStateException, IOException {
 		
-		// img 삽입은 보류
-		System.out.println(goods);
 		goods.setUserNo(loginUser.getUserNo());
-		int result = service.insertGoods(goods);
+		
+		
+		String webPath = "/resources/images/board/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int goodsNo = service.insertGoods(goods, images, webPath, filePath);
 		
 		String message = null;
 		String path = "redirect:";
-		if(result > 0) {
+		if(goodsNo > 0) {
 			message = "상품이 등록 되었습니다.";
-			path += "/detail/" + goods.getGoodsNo();
+			path += "/detail/" + goodsNo;
 		}else {
 			message = "상품 등록이 실패했습니다. 다시 확인해주세요";
+			path += "/detail/" + goods.getGoodsNo();
 		}
 		ra.addFlashAttribute("message", message);
 		return path;
