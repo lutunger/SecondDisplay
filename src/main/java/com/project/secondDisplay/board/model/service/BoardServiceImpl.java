@@ -75,17 +75,16 @@ public class BoardServiceImpl implements BoardService {
 
 					img.setFileOrder(i);
 
-					String fileName = images.get(i).getOriginalFilename();
-
-					img.setFilePath(filePath + Util.fileRename(fileName));
+					String fileName = Util.fileRename(images.get(i).getOriginalFilename());
 					
-					System.out.println(img.toString());
+					img.setFileName(fileName);
+					
+					img.setFilePath(webPath + fileName);
 					
 					uploadList.add(img);
 				}
 			}
 
-			System.out.println(uploadList.toString());
 			
 			if (!uploadList.isEmpty()) {
 				int result = dao.insertImgList(uploadList);
@@ -96,7 +95,7 @@ public class BoardServiceImpl implements BoardService {
 
 						int index = uploadList.get(i).getFileOrder();
 
-						images.get(index).transferTo(new File(uploadList.get(i).getFilePath()));
+						images.get(index).transferTo(new File(filePath + uploadList.get(i).getFileName()));
 
 					}
 

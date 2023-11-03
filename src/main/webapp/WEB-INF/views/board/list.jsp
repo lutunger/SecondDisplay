@@ -75,7 +75,7 @@
 				<a class="link-underline link-underline-opacity-0" href="/detail/${goods.goodsNo}">
 					<div class="col">
 						<div class="card">
-							<img src="/resources/images/board/dummy3.png" class="card-img-top" style="width: 100%;">
+							<img src="${goods.thumbnail}" class="card-img-top" style="width: 100%;">
 							<div class="card-body">
 								<p class="card-text mb-1 text-truncate">${goods.goodsTitle}</p>
 								<div class="d-flex justify-content-between">

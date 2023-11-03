@@ -1,5 +1,7 @@
 package com.project.secondDisplay.board.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +21,13 @@ public class Goods {
 	private int viewCount;
 	private String enrollDate;
 	private String goodsStatus;
+	
 	private String goodsStatusName;
+	
+    private String thumbnail;
+    
+    private List<goodsImg> imageList;
+
 
 	public void statusNaming() {
 	if(goodsStatus.equals("A")) this.goodsStatusName = "판매중";

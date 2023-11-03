@@ -12,6 +12,7 @@ import lombok.ToString;
 public class goodsImg {
 	private int fileNo;
 	private int goodsNo;
+	private String fileName;
 	private int fileOrder;
 	private String filePath;
 }
