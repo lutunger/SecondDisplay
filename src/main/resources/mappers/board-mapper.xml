@@ -14,9 +14,15 @@
 	    <result property="goodsStatus" column="GOODS_STATUS"/>
 	    
 	    <result property="thumbnail" column="THUMBNAIL"/>
+	    
+   		<collection property="imageList" 
+			select="selectImageList" 
+			column="GOODS_NO"
+			javaType="java.util.ArrayList"
+			ofType="GoodsImg"	/>
 	</resultMap>
 	
-	<resultMap type="goodsImg" id="goodsImg_rm">
+	<resultMap type="GoodsImg" id="goodsImg_rm">
 		<id property="fileNo" column="FILE_NO"/>
 		<result property="goodsNo" column="GOODS_NO"/>
 		<result property="fileName" column="FILE_NAME"/>
@@ -40,7 +46,7 @@
 		SELECT A.GOODS_NO , A.USER_NO , A.CATEGORY_NO , A.GOODS_TITLE , A.GOODS_PRICES , A.GOODS_STATUS ,
 				IFNULL(B.FILE_PATH, '/resources/images/board/dummy3.png') THUMBNAIL
 		FROM goods A
-		LEFT JOIN (SELECT GOODS_NO, FILE_PATH FROM files f) B ON A.GOODS_NO = B.GOODS_NO 
+		LEFT JOIN (SELECT GOODS_NO, FILE_PATH FROM files f WHERE FILE_ORDER = 0) B ON A.GOODS_NO = B.GOODS_NO 
 		<choose>
 			<when test="categoryNo == 100">
 				WHERE CATEGORY_NO BETWEEN 100 AND 200
@@ -68,6 +74,12 @@
 		SELECT *
 		FROM goods
 		WHERE GOODS_NO = #{goodsNo}
+	</select>
+	
+	<select id="selectImageList" resultMap="goodsImg_rm">
+		SELECT * FROM files
+		WHERE GOODS_NO = #{goodsNo}
+		ORDER BY FILE_ORDER
 	</select>
 	
 	<insert id="insertGoods" parameterType="goods" useGeneratedKeys="true" keyProperty="goodsNo">

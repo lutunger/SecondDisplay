@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class goodsImg {
+public class GoodsImg {
 	private int fileNo;
 	private int goodsNo;
 	private String fileName;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
-import com.project.secondDisplay.board.model.dto.goodsImg;
+import com.project.secondDisplay.board.model.dto.GoodsImg;
 
 @Repository
 public class BoardDAO {
@@ -40,7 +40,7 @@ public class BoardDAO {
 		return result;
 	}
 	
-	public int insertImgList(List<goodsImg> uploadList) {
+	public int insertImgList(List<GoodsImg> uploadList) {
 		return sqlSession.insert("boardMapper.insertImageList", uploadList);
 	}
 

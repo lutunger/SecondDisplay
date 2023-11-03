@@ -64,7 +64,7 @@ public class BoardController {
 		service.updateViewCount(goodsNo);
 		Goods goods = service.selectGoodsDetail(goodsNo);
 		goods.statusNaming();
-		
+		System.out.println(goods);
 		model.addAttribute("goods", goods);
 		
 		return "/board/detail";

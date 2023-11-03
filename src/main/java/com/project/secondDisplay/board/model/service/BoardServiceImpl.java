@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.secondDisplay.board.model.dao.BoardDAO;
 import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
-import com.project.secondDisplay.board.model.dto.goodsImg;
+import com.project.secondDisplay.board.model.dto.GoodsImg;
 import com.project.secondDisplay.board.model.exception.FileUploadException;
 import com.project.secondDisplay.common.Util;
 
@@ -63,13 +63,13 @@ public class BoardServiceImpl implements BoardService {
 
 		if (goodsNo > 0) {
 
-			List<goodsImg> uploadList = new ArrayList<goodsImg>();
+			List<GoodsImg> uploadList = new ArrayList<GoodsImg>();
 
 			for (int i = 0; i < images.size(); i++) {
 
 				if (images.get(i).getSize() > 0) {
 
-					goodsImg img = new goodsImg();
+					GoodsImg img = new GoodsImg();
 
 					img.setGoodsNo(goodsNo);
 

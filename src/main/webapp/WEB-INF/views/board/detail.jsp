@@ -61,28 +61,34 @@
 				</ol>
 			</nav>
 
+					
 
 		<div class="goodsWrapper d-flex">
-			<div id="goodsImg" class="carousel slide w-50">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#goodsImg" 
-					data-bs-slide-to="0" class="active" aria-current="true"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" 
-					data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<%-- 
-					<button type="button" data-bs-target="#carouselExampleIndicators" 
-					data-bs-slide-to="2" aria-label="Slide 3"></button>
-					--%>
-				</div>
+			<div id="goodsImg" class="carousel carousel-dark slide w-50">
 				<div class="carousel-inner">
-					<div class="carousel-item active">
-					<img src="/resources/images/board/dummy3.png" class="d-block w-100" alt="...">
-					</div>
-					<div class="carousel-item">
-					<img src="/resources/images/board/dummy3.png" class="d-block w-100" alt="...">
-					</div>
+				<c:choose>
+				
+					<c:when test="${empty goods.imageList}">
+						<div class="carousel-item active">
+							<img src="/resources/images/board/dummy3.png" class="d-block w-100">
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<c:forEach var="image" items="${goods.imageList}" varStatus="vs">
+							<div class='carousel-item 
+							<c:if test="${vs.first}">
+							active
+							</c:if>
+							'>
+								<img src="${image.filePath}" class="d-block w-100">
+							</div>
+						</c:forEach>
+					</c:otherwise>
+
+				</c:choose>
 					<%-- <div class="carousel-item">
-					<img src="..." class="d-block w-100" alt="...">
+					<img src="/resources/images/board/dummy3.png" class="d-block w-100">
 					</div> --%>
 				</div>
 				<button class="carousel-control-prev" type="button" 

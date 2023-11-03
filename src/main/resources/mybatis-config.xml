@@ -18,7 +18,7 @@
 		<typeAlias type="com.project.secondDisplay.user.model.dto.User" alias="User"/>
 		<typeAlias type="com.project.secondDisplay.board.model.dto.Goods" alias="Goods"/>
 		<typeAlias type="com.project.secondDisplay.board.model.dto.Category" alias="Category"/>
-		<typeAlias type="com.project.secondDisplay.board.model.dto.goodsImg" alias="goodsImg"/>
+		<typeAlias type="com.project.secondDisplay.board.model.dto.GoodsImg" alias="goodsImg"/>
 		<typeAlias type="com.project.secondDisplay.chat.model.dto.Room" alias="room"/>
 		<typeAlias type="com.project.secondDisplay.chat.model.dto.Message" alias="message"/>
 	</typeAliases>

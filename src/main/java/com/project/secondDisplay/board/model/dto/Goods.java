@@ -26,7 +26,7 @@ public class Goods {
 	
     private String thumbnail;
     
-    private List<goodsImg> imageList;
+    private List<GoodsImg> imageList;
 
 
 	public void statusNaming() {
