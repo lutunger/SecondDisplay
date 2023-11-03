@@ -26,6 +26,38 @@
 		<form action="/edit" method="post" >	
 			<table class="table text-center align-middle">
 				<input type="hidden" name="goodsNo" value="${goods.goodsNo}">
+
+				<tr>
+					<td class="w-25">
+					이미지
+					</td>
+					<td class="d-flex justify-content-between">
+
+						<label for="img1">
+							<div class="imgbox position-relative border rounded-2">
+								<img src="${goods.imageList[0].filePath}"	class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img1">
+								<span class="badge text-bg-primary position-absolute top-0 start-0">썸네일</span>
+							</div>
+						</label>
+						
+						<label for="img2">
+							<div class="imgbox imgbox position-relative border rounded-2">
+								<img src="${goods.imageList[1].filePath}" class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img2">
+							</div>
+						</label>
+						
+						<label for="img3">
+							<div class="imgbox imgbox position-relative border rounded-2">
+								<img src="${goods.imageList[2].filePath}" class="preview img-fluid">
+								<input type="file" class="inputImage" name="images" id="img3">
+							</div>
+						</label>
+
+					</td>
+				</tr>
+
 				<tr>
 					<td>상품명</td>
 					<td>
@@ -89,7 +121,7 @@
 			</table>
 
 			<div class="d-flex justify-content-end">
-				<button type="submit" class="btn btn-lg btn-primary">등록</button>
+				<button type="submit" class="btn btn-lg btn-primary">수정</button>
 			</div>
 
 		</form>

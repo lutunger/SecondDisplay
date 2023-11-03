@@ -34,27 +34,33 @@
 					</td>
 					<td class="d-flex justify-content-between">
 
-						<label for="img1">
 							<div class="imgbox position-relative border rounded-2">
 								<img src=""	class="preview img-fluid">
+								<label class="position-absolute top-50 start-50 translate-middle" for="img1">
+									<i class="img-plus fa-solid fa-camera fa-4x" style="cursor:pointer;"></i>
+								</label>	
 								<input type="file" class="inputImage" name="images" id="img1">
 								<span class="badge text-bg-primary position-absolute top-0 start-0">썸네일</span>
+								<i class="delete-image position-absolute top-0 end-0 fa-solid fa-xmark fa-2x" style="cursor:pointer;"></i>
 							</div>
-						</label>
 						
-						<label for="img2">
 							<div class="imgbox imgbox position-relative border rounded-2">
+								<label class="position-absolute top-50 start-50 translate-middle" for="img2">
+									<i class="img-plus fa-solid fa-camera fa-4x" style="cursor:pointer;"></i>
+								</label>
 								<img src="" class="preview img-fluid">
 								<input type="file" class="inputImage" name="images" id="img2">
+								<i class="delete-image position-absolute top-0 end-0 fa-solid fa-xmark fa-2x" style="cursor:pointer;"></i>
 							</div>
-						</label>
 						
-						<label for="img3">
 							<div class="imgbox imgbox position-relative border rounded-2">
+								<label class="position-absolute top-50 start-50 translate-middle" for="img3">
+									<i class="img-plus fa-solid fa-camera fa-4x" style="cursor:pointer;"></i>
+								</label	bel>
 								<img src="" class="preview img-fluid">
 								<input type="file" class="inputImage" name="images" id="img3">
+								<i class="delete-image position-absolute top-0 end-0 fa-solid fa-xmark fa-2x" style="cursor:pointer;"></i>
 							</div>
-						</label>
 
 					</td>
 				</tr>

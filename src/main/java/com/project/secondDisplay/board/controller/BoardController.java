@@ -64,7 +64,6 @@ public class BoardController {
 		service.updateViewCount(goodsNo);
 		Goods goods = service.selectGoodsDetail(goodsNo);
 		goods.statusNaming();
-		System.out.println(goods);
 		model.addAttribute("goods", goods);
 		
 		return "/board/detail";
@@ -134,9 +133,19 @@ public class BoardController {
 	@PostMapping("/edit")
 	public String updateGoods(@SessionAttribute(value = "loginUser") User loginUser
 								,Goods goods
-								,RedirectAttributes ra) {
+								,RedirectAttributes ra
+								, @RequestParam(value="images", required=false) List<MultipartFile> images
+								, @RequestParam(value="deleteList", required=false) String deleteList
+								, HttpSession session) throws IllegalStateException, IOException {
+		
 		goods.setUserNo(loginUser.getUserNo());
-		int result = service.updateGoods(goods);
+		
+		String webPath = "/resources/images/board/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int result = service.updateGoods(goods, images, webPath, filePath, deleteList);
+		
+		
 		String message = null;
 		String path = "redirect:/";
 		if(result > 0) {

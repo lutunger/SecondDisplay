@@ -6,36 +6,50 @@ $("#category2").on("input", function() {
     $("#categoryNo").val(categoryNo)
 });
 
-
-
 const preview = document.getElementsByClassName("preview"); 
 
 const inputImage = document.getElementsByClassName("inputImage"); 
 
+const deleteImage = document.getElementsByClassName("delete-image"); 
+
+const addIcon = document.getElementsByClassName("img-plus");
 
 for(let i = 0 ; i < inputImage.length ; i ++){
 
-    // 파일이 선택되거나, 선택 후 취소 되었을 때
     inputImage[i].addEventListener('change', e => {
 
-        const file = e.target.files[0]; // 선택된 파일의 데이터
+        const file = e.target.files[0]; 
 
-        if(file != undefined) { // 파일이 선택 되었을 때
+        if(file != undefined) { 
             
-            const reader = new FileReader(); // 파일을 읽는 객체
+            const reader = new FileReader(); 
 
             reader.readAsDataURL(file);
-            // 지정된 파일을 읽은 후 result 변수에 URL 형식으로 저장
+        
 
-            reader.onload = e => { //파일을 다 읽은 후 수행
+            reader.onload = e => { 
                 preview[i].setAttribute("src", e.target.result);
             }
 
+            addIcon[i].classList.toggle("d-none");
             
-        } else { // 선택 후 취소 되었을 때
-                // -> 선택된 파일 없음 -> 미리보기 삭제
+        } else { 
             preview[i].removeAttribute("src");  
-
+            
+            addIcon[i].classList.toggle("d-none");
+        }
+        
+    });
+    
+    deleteImage[i].addEventListener('click', () => {
+        
+        if(preview[i].getAttribute("src") != ""){
+            
+            preview[i].removeAttribute("src");
+            
+            inputImage[i].value = ""; 
+            
+            addIcon[i].classList.toggle("d-none");
         }
 
     });
