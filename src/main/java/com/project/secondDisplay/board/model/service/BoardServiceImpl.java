@@ -17,6 +17,7 @@ import com.project.secondDisplay.board.model.dto.Category;
 import com.project.secondDisplay.board.model.dto.Goods;
 import com.project.secondDisplay.board.model.dto.GoodsImg;
 import com.project.secondDisplay.board.model.exception.FileUploadException;
+import com.project.secondDisplay.board.model.exception.ImageDeleteException;
 import com.project.secondDisplay.common.Util;
 
 @Service
@@ -76,16 +77,15 @@ public class BoardServiceImpl implements BoardService {
 					img.setFileOrder(i);
 
 					String fileName = Util.fileRename(images.get(i).getOriginalFilename());
-					
+
 					img.setFileName(fileName);
-					
+
 					img.setFilePath(webPath + fileName);
-					
+
 					uploadList.add(img);
 				}
 			}
 
-			
 			if (!uploadList.isEmpty()) {
 				int result = dao.insertImgList(uploadList);
 
@@ -99,10 +99,10 @@ public class BoardServiceImpl implements BoardService {
 
 					}
 
+				} else {
+					throw new FileUploadException();
 				}
 
-			} else {
-				throw new FileUploadException();
 			}
 
 		}
@@ -128,8 +128,76 @@ public class BoardServiceImpl implements BoardService {
 
 	@Transactional(rollbackFor = { Exception.class })
 	@Override
-	public int updateGoods(Goods goods) {
-		return dao.updateGoods(goods);
+	public int updateGoods(Goods goods, List<MultipartFile> images, String webPath, String filePath, String deleteList)
+			throws IllegalStateException, IOException {
+
+		goods.setGoodsDescr(Util.XSSHandling(goods.getGoodsDescr()));
+		goods.setGoodsTitle(Util.XSSHandling(goods.getGoodsTitle()));
+
+		int result = dao.updateGoods(goods);
+
+		System.out.println(images);
+
+		if (result > 0) {
+
+			if (!deleteList.equals("")) {
+
+				Map<String, Object> deleteMap = new HashMap<>();
+				deleteMap.put("goodsNo", goods.getGoodsNo());
+				deleteMap.put("deleteList", deleteList);
+
+				result = dao.imageDelete(deleteMap);
+
+				if (result == 0) {
+					throw new ImageDeleteException();
+				}
+
+			}
+
+			List<GoodsImg> uploadList = new ArrayList<>();
+
+			for (int i = 0; i < images.size(); i++) {
+
+				if (images.get(i).getSize() > 0) {
+
+					GoodsImg img = new GoodsImg();
+
+					img.setGoodsNo(goods.getGoodsNo());
+
+					img.setFileOrder(i);
+
+					String fileName = Util.fileRename(images.get(i).getOriginalFilename());
+
+					img.setFileName(fileName);
+
+					img.setFilePath(webPath + fileName);
+
+					uploadList.add(img);
+
+					result = dao.imageUpdate(img);
+
+					if (result == 0) {
+						result = dao.ImageInsert(img);
+					}
+				}
+			}
+
+			if (!uploadList.isEmpty()) {
+
+				for (int i = 0; i < uploadList.size(); i++) {
+
+					int index = uploadList.get(i).getFileOrder();
+
+					images.get(index).transferTo(new File(filePath + uploadList.get(i).getFileName()));
+
+				}
+
+			}
+
+		}
+
+		return result;
+
 	}
 
 	@Transactional(rollbackFor = { Exception.class })

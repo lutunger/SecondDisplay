@@ -27,7 +27,7 @@ public interface BoardService {
 
 	Goods selectEditGoods(Goods goods);
 
-	int updateGoods(Goods goods);
+	int updateGoods(Goods goods, List<MultipartFile> images, String webPath, String filePath, String deleteList) throws IllegalStateException, IOException;
 	
 	int deleteGoods(Goods goods);
 

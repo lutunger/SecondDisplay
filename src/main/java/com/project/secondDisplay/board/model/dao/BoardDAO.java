@@ -1,6 +1,7 @@
 package com.project.secondDisplay.board.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -61,13 +62,29 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectEditGoods", goods);
 	}
 	
+	
 	public int updateGoods(Goods goods) {
 		return sqlSession.update("boardMapper.updateGoods", goods);
+	}
+	
+	public int imageDelete(Map<String, Object> deleteMap) {
+		return sqlSession.delete("boardMapper.imageDelete", deleteMap);
+	}
+	
+	public int imageUpdate(GoodsImg img) {
+		return sqlSession.update("boardMapper.imageUpdate", img);
+	}
+	
+	public int ImageInsert(GoodsImg img) {
+		return sqlSession.insert("boardMapper.imageInsert", img);
 	}
 	
 	public int deleteTarget(Goods goods) {
 		return sqlSession.delete("boardMapper.deleteTarget", goods);
 	}
+
+
+
 
 
 

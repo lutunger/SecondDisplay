@@ -133,6 +133,32 @@
 		WHERE GOODS_NO = #{goodsNo} 
 	</update>
 	
+	<delete id="imageDelete">
+		DELETE FROM files
+		WHERE GOODS_NO = #{goodsNo}
+		AND FILE_ORDER IN ( #{deleteList} )
+	</delete>
+	
+ 	<update id="imageUpdate">
+	  	UPDATE files SET
+		FILE_NAME = #{fileName},
+		FILE_PATH = #{filePath}
+		WHERE GOODS_NO = #{goodsNo}
+		AND FILE_ORDER = #{fileOrder}
+  	</update>
+  	
+  	<insert id="imageInsert">
+  		INSERT INTO files
+		(GOODS_NO, FILE_NAME, FILE_ORDER, FILE_PATH)
+		VALUES
+		(
+			#{goodsNo},
+			#{fileName},
+			#{fileOrder},
+			#{filePath}			
+		)
+  	</insert>
+	
 	<delete id="deleteTarget" parameterType="goods">
 		DELETE 
 		FROM goods

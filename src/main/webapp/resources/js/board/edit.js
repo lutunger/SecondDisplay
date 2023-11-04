@@ -28,6 +28,7 @@ const deleteImage = document.getElementsByClassName("delete-image");
 
 const addIcon = document.getElementsByClassName("img-plus");
 
+const deleteSet = new Set();
 
 for(let i = 0; i < addIcon.length ; i++){
     if(preview[i].getAttribute("src") != ""){
@@ -50,6 +51,8 @@ for(let i = 0 ; i < inputImage.length ; i ++){
 
             reader.onload = e => { 
                 preview[i].setAttribute("src", e.target.result);
+
+                deleteSet.delete(i);
             }
 
             addIcon[i].classList.toggle("d-none");
@@ -69,6 +72,8 @@ for(let i = 0 ; i < inputImage.length ; i ++){
             preview[i].removeAttribute("src");
             
             inputImage[i].value = ""; 
+
+            deleteSet.add(i);
             
             addIcon[i].classList.toggle("d-none");
         }
@@ -76,3 +81,9 @@ for(let i = 0 ; i < inputImage.length ; i ++){
     });
 
 }
+
+
+$('#updateGoods').on("submit", () => {
+    document.querySelector("[name='deleteList']").value
+    = Array.from(deleteSet).join(',');
+})

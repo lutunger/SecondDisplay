@@ -23,7 +23,7 @@
 		</nav>
 
 		<h1>상품등록</h1>
-		<form action="/edit" method="post" >	
+		<form id="updateGoods" action="/edit" method="post" enctype="multipart/form-data">	
 			<table class="table text-center align-middle">
 				<input type="hidden" name="goodsNo" value="${goods.goodsNo}">
 
@@ -60,6 +60,7 @@
 								<input type="file" class="inputImage" name="images" id="img3">
 								<i class="delete-image position-absolute top-0 end-0 fa-solid fa-xmark fa-2x" style="cursor:pointer;"></i>
 							</div>
+							<input id="deleteList" type="hidden" name="deleteList" value="">
 					</td>
 				</tr>
 
