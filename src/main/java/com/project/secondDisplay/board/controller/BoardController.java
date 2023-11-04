@@ -143,7 +143,7 @@ public class BoardController {
 		String webPath = "/resources/images/board/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
-		int result = service.updateGoods(goods, images, webPath, filePath, deleteList);
+		int result = service.updateGoods(goods);
 		
 		
 		String message = null;
