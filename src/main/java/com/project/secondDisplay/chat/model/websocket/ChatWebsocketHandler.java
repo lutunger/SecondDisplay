@@ -53,9 +53,9 @@ public class ChatWebsocketHandler extends TextWebSocketHandler{
             
             for(WebSocketSession s : sessions) {
                 
-                int loginMemberNo = ((User)s.getAttributes().get("loginUser")).getUserNo();
+                int loginUserNo = ((User)s.getAttributes().get("loginUser")).getUserNo();
                 
-                if(loginMemberNo == msg.getReceiverUserNo() || loginMemberNo == msg.getSenderUserNo()) {
+                if(loginUserNo == msg.getReceiverUserNo() || loginUserNo == msg.getSenderUserNo()) {
                     
                     s.sendMessage(new TextMessage(new Gson().toJson(msg)));
                 }

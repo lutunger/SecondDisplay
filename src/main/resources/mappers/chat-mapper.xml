@@ -82,9 +82,9 @@
 	
 	<insert id="insertMessage">
 		INSERT INTO chat_message
-		(CHATROOM_NO, SERDER_USER_NO, RECEIVER_USER_NO, MESSAGE)
+		(CHATROOM_NO, SENDER_USER_NO, RECEIVER_USER_NO, MESSAGE)
 		VALUES
-		(#{chatRoomNo}, #{senderNo}, #{receiverNo}, #{message})
+		(#{chatRoomNo}, #{senderUserNo}, #{receiverUserNo}, #{message})
 	</insert>
 	
 	

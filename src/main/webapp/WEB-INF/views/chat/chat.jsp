@@ -25,6 +25,8 @@
                         <c:forEach var="room" items="${roomList}">
                             <li class="chatRoom list-group-item d-flex align-items-center" 
                             style="cursor: pointer;"
+                            data-user1No = "${room.user1No}"
+                            data-user2No = "${room.user2No}"
                             data-roomNo = "${room.chatRoomNo}"
                             data-goodsNo = "${room.goodsNo}"
                             data-thumbnail = "${room.thumbNail}"
@@ -75,8 +77,8 @@
 
                 <div class="card-footer">
                     <div class="input-group">
-                        <textarea type="text" class="form-control" style="resize: none;"></textarea>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <textarea type="text" id="inputChatting" class="form-control" style="resize: none;"></textarea>
+                        <button class="btn btn-outline-secondary" type="button" id="send">
                             <i class="fa-solid fa-paper-plane"></i>
                         </button>
                     </div>

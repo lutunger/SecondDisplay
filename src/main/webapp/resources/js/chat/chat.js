@@ -1,4 +1,7 @@
 
+let chatRoomNo;
+let targetUserNo;
+
 const chatRoom = document.getElementsByClassName("chatRoom")
 
 for (const item of chatRoom) {
@@ -11,12 +14,22 @@ for (const item of chatRoom) {
         item.classList.add("active");
 
 
+
         const messageList = document.getElementById("messageList");
 		messageList.innerHTML = "";
 
-        const listItem = e.target.closest('li[data-roomNo][data-goodsNo][data-thumbnail][data-title][data-price]');
+        const listItem = e.target.closest('li[data-roomNo][data-goodsNo][data-thumbnail][data-title][data-price][data-user1No][data-user2No]');
         
+        const user1No = listItem.getAttribute('data-user1No');
+        const user2No = listItem.getAttribute('data-user2No');
+
+        if(user1No == loginUserNo) targetUserNo = user2No;
+        else targetUserNo = user1No;
+
         const roomNo = listItem.getAttribute('data-roomNo');
+
+        chatRoomNo = roomNo;
+
         const goodsNo = listItem.getAttribute('data-goodsNo');
         const thumbnail = listItem.getAttribute('data-thumbnail');
         const title = listItem.getAttribute('data-title');
@@ -72,13 +85,48 @@ for (const item of chatRoom) {
     });
 }
 
+if(enterRoomNo != ""){
+    $(`[data-roomno="${enterRoomNo}"]`).click();
+}
+
+
+
+
 let chattingSock;
 
 if(loginUserNo != ""){
 	chattingSock = new SockJS("/chattingSock");
 }
 
-if(enterRoomNo != ""){
-    $(`[data-roomno="${enterRoomNo}"]`).click();
+
+const send = document.getElementById("send");
+
+const sendMessage = () => {
+	const inputChatting = document.getElementById("inputChatting");
+
+	if (inputChatting.value.trim().length == 0) {
+		alert("채팅을 입력해주세요.");
+		inputChatting.value = "";
+	} else {
+		var obj = {
+			"senderUserNo": loginUserNo,
+			"receiverUserNo": targetUserNo,
+			"chatRoomNo": chatRoomNo,
+			"message": inputChatting.value,
+		};
+		console.log(obj)
+
+		// JSON.stringify() : 자바스크립트 객체를 JSON 문자열로 변환
+		chattingSock.send(JSON.stringify(obj));
+
+		inputChatting.value = "";
+	}
 }
 
+inputChatting.addEventListener("keyup", e => {
+	if(e.key == "Enter"){ 
+		if (!e.shiftKey) {
+			sendMessage();
+		}
+	}
+})
