@@ -42,7 +42,6 @@ public class ChatWebsocketHandler extends TextWebSocketHandler{
         ObjectMapper objectMapper = new ObjectMapper();
         
         Message msg = objectMapper.readValue( message.getPayload(), Message.class);
-        System.out.println(msg); 
         
         // DB 삽입 서비스 호출
         int result = service.insertMessage(msg);

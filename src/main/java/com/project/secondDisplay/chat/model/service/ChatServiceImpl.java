@@ -1,6 +1,7 @@
 package com.project.secondDisplay.chat.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.secondDisplay.chat.model.dao.ChatDAO;
 import com.project.secondDisplay.chat.model.dto.Message;
 import com.project.secondDisplay.chat.model.dto.Room;
+import com.project.secondDisplay.common.Util;
 
 @Service
 public class ChatServiceImpl implements ChatService{
@@ -20,10 +22,20 @@ public class ChatServiceImpl implements ChatService{
 		return dao.selectRoomList(userNo);
 	}
 
+	@Override
+	public int checkRoomNo(Map<String, Integer> map) {
+		return dao.checkRoomNo(map);
+	}
+
+	@Override
+	public int createRoom(Map<String, Integer> map) {
+		return dao.createRoom(map);
+	}
 
 	@Override
 	public int insertMessage(Message msg) {
-		return 0;
+		msg.setMessage(Util.XSSHandling(msg.getMessage()));
+		return dao.insertMessage(msg);
 	}
 	
 	

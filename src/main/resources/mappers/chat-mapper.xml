@@ -26,8 +26,14 @@
 	<resultMap type="Room" id="room_rm">
 	 	<id property="chatRoomNo" column="CHATROOM_NO"/>
 	    <result property="goodsNo" column="GOODS_NO"/>
+	    <result property="goodsTitle" column="GOODS_TITLE"/>
+	    <result property="goodsPrice" column="GOODS_PRICES"/>
+	    <result property="thumbNail" column="GOODS_THUMBNAIL"/>
+	    <result property="goodsNo" column="GOODS_NO"/>
 	    <result property="user1No" column="USER1_NO"/>
+	    <result property="user1Nickname" column="USER1_NM"/>
 	    <result property="user2No" column="USER2_NO"/>
+	    <result property="user2Nickname" column="USER2_NM"/>
 	</resultMap>
 	
 	<resultMap type="Message" id="message_rm">
@@ -41,13 +47,47 @@
 	</resultMap>
 
 	<select id="selectRoomList" resultMap="room_rm">
-		SELECT *
-		FROM chat_room
-		WHERE USER1_NO = #{userNo}
-		OR USER2_NO = #{userNO}
+		SELECT CHATROOM_NO, a.GOODS_NO, USER1_NO, USER1_NM, USER2_NO, USER2_NM, GOODS_TITLE, GOODS_PRICES, IFNULL(FILE_PATH, '/resources/images/board/dummy3.png') GOODS_THUMBNAIL
+		FROM chat_room a
+		LEFT JOIN goods b ON a.GOODS_NO = b.GOODS_NO 
+		LEFT JOIN (SELECT GOODS_NO, FILE_PATH, FILE_ORDER FROM files WHERE FILE_ORDER = 0) c ON a.GOODS_NO = c.GOODS_NO
+		LEFT JOIN (SELECT USER_NO, USER_NM AS USER1_NM FROM user) d ON a.USER1_NO = d.USER_NO 
+		LEFT JOIN (SELECT USER_NO, USER_NM AS USER2_NM FROM user) e ON a.USER2_NO = e.USER_NO
+		WHERE a.USER1_NO = #{userNO}
+		OR a.USER2_NO = #{userNo}
+		ORDER BY CHATROOM_NO DESC
 	</select>
 		
+	<select id="checkRoomNo" parameterType="map" resultType="_int">
+		SELECT IFNULL(SUM(CHATROOM_NO), 0) CHATROOM_NO 
+		FROM chat_room
+		WHERE USER1_NO = #{user1No}
+		AND USER2_NO = #{user2No}
+		AND GOODS_NO = #{goodsNo}
+	</select>
+	
+	<insert id="createRoom" parameterType="map" useGeneratedKeys="true">
 		
+		
+		<selectKey keyProperty="roomNo" order="BEFORE" resultType="_int">
+			SELECT (MAX(CHATROOM_NO)+1) CHATROOM_NO FROM chat_room 
+		</selectKey>
+		
+		INSERT INTO chat_room
+		(CHATROOM_NO, GOODS_NO, USER1_NO, USER2_NO )
+		VALUES 
+		(#{roomNo}, #{goodsNo}, #{user1No}, #{user2No} )
+		
+	</insert>
+	
+	<insert id="insertMessage">
+		INSERT INTO chat_message
+		(CHATROOM_NO, SERDER_USER_NO, RECEIVER_USER_NO, MESSAGE)
+		VALUES
+		(#{chatRoomNo}, #{senderNo}, #{receiverNo}, #{message})
+	</insert>
+	
+	
 		
 </mapper>
 

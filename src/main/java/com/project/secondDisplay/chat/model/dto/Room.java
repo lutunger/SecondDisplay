@@ -12,8 +12,12 @@ import lombok.ToString;
 public class Room {
     private int chatRoomNo;
     private int goodsNo;
-    private Goods goods;
+    private String goodsTitle;
+    private int goodsPrice;
+    private String thumbNail;
     private int user1No;
+    private String user1Nickname;
     private int user2No;
+    private String user2Nickname;
     private int notReadCount;
 }

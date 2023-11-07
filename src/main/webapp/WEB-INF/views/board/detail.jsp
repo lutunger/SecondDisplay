@@ -128,17 +128,22 @@
 
 					<div class="goodsAction d-flex flex-row-reverse justify-content-center mt-5">
 						<c:choose>
+							<c:when test="${empty sessionScope.loginUser}">
+								<a class="btn btn-secondary btn-lg" 
+								data-bs-toggle="modal" data-bs-target="#loginModal"
+								>채팅하기</a>
+							</c:when>
 							<c:when test="${sessionScope.loginUser.userNo != goods.userNo}">
-								<a class="btn btn-primary btn-lg" href="#">채팅하기</a>
+								<form action="/chat/enter" method="post">
+									<input type="hidden" name="goodsNo" value="${goods.goodsNo}">
+									<input type="hidden" name="user1No" value="${sessionScope.loginUser.userNo}">
+									<input type="hidden" name="user2No" value="${goods.userNo}">
+									<button type="submit" class="btn btn-primary btn-lg">채팅하기</button>
+								</form>
 							</c:when>
 							<c:when test="${sessionScope.loginUser.userNo == goods.userNo}">
 								<a class="btn btn-primary btn-lg" href="/edit/${goods.goodsNo}">수정하기</a>
 							</c:when>
-							<c:otherwise>
-								<a class="btn btn-secondary btn-lg" 
-								data-bs-toggle="modal" data-bs-target="#loginModal"
-								>채팅하기</a>
-							</c:otherwise>
 						</c:choose>
 
 					</div>

@@ -19,8 +19,8 @@
 
 	<main class="mx-auto mt-3 content-w">
 		
-		<div>
-			<img src="/resources/images/common/banner.png" style="width:100%;">
+		<div class="banner">
+			<img src="/resources/images/common/banner2.png">
 		</div>
 
 		<section class="mt-5">

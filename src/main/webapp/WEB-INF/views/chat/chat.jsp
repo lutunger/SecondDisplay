@@ -18,24 +18,38 @@
 	<main class="container content-w mt-3 mb-3">
 
         <div class="chat-wrapper d-flex h-75">
-
             <div class="chat-list card w-50">
                 <h5 class="card-header">채팅방</h5>
                 <div class="card-body p-0 overflow-y-scroll">
                     <ul class="list-group list-group-flush mh-100 ">
-                        <li class="list-group-item active d-flex align-items-center">
-                            <div class="h-100">
-                                <i class="fa-regular fa-circle-user fa-3x"></i>
-                            </div>
-                            <div class="ms-3">
-                                <div class="fs-4 text-nowrap">
-                                    사용자명
+                        <c:forEach var="room" items="${roomList}">
+                            <li class="chatRoom list-group-item d-flex align-items-center" 
+                            style="cursor: pointer;"
+                            data-roomNo = "${room.chatRoomNo}"
+                            data-goodsNo = "${room.goodsNo}"
+                            data-thumbnail = "${room.thumbNail}"
+                            data-title = "${room.goodsTitle}"
+                            data-price = "${room.goodsPrice}">
+                                <div class="h-100">
+                                    <img src="${room.thumbNail}" style="width:48px; height:48px;">
                                 </div>
-                                <div class="fs-6 text-nowrap">
-                                    상품
+                                <div class="ms-3">
+                                    <div class="fs-4 text-truncate">
+                                        <c:choose>
+                                            <c:when test="${sessionScope.loginUser.userNo == room.user1No}">
+                                                ${room.user2Nickname}님
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${room.user1Nickname}님
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div class="fs-6 text-truncate">
+                                        ${room.goodsTitle} 상품
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -43,14 +57,9 @@
             <div class="chat-message card w-50">
                 <h5 class="card-header">메시지</h5>
 
-                <div class="card-body overflow-y-scroll">
-                    <div class="card mb-5">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
+                <div id="messageList" class="card-body overflow-y-scroll h-100">
 
-                    <div class="d-flex flex-row-reverse mb-3">
+                    <%-- <div class="d-flex flex-row-reverse mb-3">
                         <div class="border rounded-3 p-2" style="max-width: 50%;">
                             ㅁㅁㅁㅁ
                         </div>
@@ -60,7 +69,7 @@
                         <div class="border rounded-3 p-2" style="max-width: 50%;">
                             ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇ
                         </div>
-                    </div>
+                    </div> --%>
 
                 </div>
 
@@ -83,6 +92,7 @@
 
     <script>
 		const loginUserNo = "${loginUser.userNo}";
+        const enterRoomNo = "${roomNo}";
 	</script>
 
 	<script src="/resources/lib/bootstrap/bootstrap.bundle.min.js"></script>
