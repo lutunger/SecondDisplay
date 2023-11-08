@@ -9,10 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.project.secondDisplay.chat.model.dto.Message;
 import com.project.secondDisplay.chat.model.dto.Room;
 import com.project.secondDisplay.chat.model.service.ChatService;
 import com.project.secondDisplay.user.model.dto.User;
@@ -56,7 +59,16 @@ public class ChatController {
 		return "redirect:/chat";
 	}
 	
+    @GetMapping(value="/chat/roomList", produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public List<Room> selectRoomList(@SessionAttribute("loginUser") User loginUser) {
+    	return service.selectRoomList(loginUser.getUserNo());
+    }
 	
-	
+    @GetMapping(value="/chat/selectMessage", produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public List<Message> selectMessageList(@RequestParam Map<String, Object> paramMap) {
+        return service.selectMessageList(paramMap);
+    }
 	
 }

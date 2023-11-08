@@ -16,4 +16,6 @@ public interface ChatService {
 
 	int insertMessage(Message msg);
 
+	List<Message> selectMessageList(Map<String, Object> paramMap);
+
 }

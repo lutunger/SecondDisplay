@@ -39,6 +39,10 @@ public class ChatDAO {
 	public int insertMessage(Message msg) {
 		return sqlSession.insert("chatMapper.insertMessage", msg);
 	}
+
+	public List<Message> selectMessageList(int roomNo) {
+		return sqlSession.selectList("chatMapper.selectMessageList", roomNo);
+	}
 	
 	
 	

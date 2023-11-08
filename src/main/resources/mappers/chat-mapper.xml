@@ -87,7 +87,11 @@
 		(#{chatRoomNo}, #{senderUserNo}, #{receiverUserNo}, #{message})
 	</insert>
 	
-	
+	<select id="selectMessageList" resultMap="message_rm">
+		SELECT *
+		FROM chat_message
+		WHERE CHATROOM_NO = ${chatRoomNo}
+	</select>
 		
 </mapper>
 
