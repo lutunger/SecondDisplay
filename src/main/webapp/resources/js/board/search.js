@@ -4,20 +4,21 @@ const board = $(".board");
 window.addEventListener('scroll', function () {
     let scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    let pageTriggerHeight = document.documentElement.scrollHeight - 80;
+    let pageTriggerHeight = document.documentElement.scrollHeight - 20;
 
     let viewportHeight = window.innerHeight;
 
     if (scrollPosition + viewportHeight >= pageTriggerHeight) {
         currentPage++;
         $.ajax({
-            url: "/category/" + categoryNo + "/?cp=" + currentPage, 
+            url: "/search?val=" + searchValue + "&cp=" + currentPage, 
             type: "POST", 
-
             success: function (data) {
+                
                 const resqString = JSON.stringify(data);
-                const resqData = JSON.parse(resqString)
-                resqData.goodsList.forEach((item) => {
+                const resqData = JSON.parse(resqString);
+                console.log(resqData);
+                resqData.forEach((item) => {
 
                     const divElement = $("<div>", {
                         "class": "col"
@@ -66,7 +67,6 @@ window.addEventListener('scroll', function () {
             },
 
             error: function (xhr, status, error) {
-                // AJAX 요청이 실패했을 때 실행되는 콜백 함수
                 console.error("데이터 불러오기 실패: " + error);
             }
         });

@@ -57,6 +57,28 @@ public class BoardController {
 		return goods;
 	}
 	
+	@GetMapping("/search")
+	public String selectSearchList(@RequestParam(value="val") String val
+									, Model model) {
+		
+		List<Goods> searchList = service.selectSearchList(val, 0);
+		
+		model.addAttribute("searchList", searchList);
+		
+		return "board/search";
+	}
+	
+	@PostMapping("/search")
+	@ResponseBody
+	public List<Goods> selectSearchListMore(@RequestParam(value="val") String val
+						, @RequestParam(value="cp", required=false, defaultValue = "1" ) int cp) {
+		
+		List<Goods> searchList = service.selectSearchList(val, cp);
+		
+		return searchList;
+	}
+	
+	
 	@GetMapping("/detail/{goodsNo}")
 	public String goodsDetail(@PathVariable("goodsNo") int goodsNo
 								,Model model) {

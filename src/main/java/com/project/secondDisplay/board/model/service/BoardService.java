@@ -15,6 +15,8 @@ public interface BoardService {
 
 	Map<String, Object> selectGoodsList(int categoryNo, int cp);
 
+	List<Goods> selectSearchList(String val, int cp);
+	
 	void updateViewCount(int goodsNo);
 		
 	Goods selectGoodsDetail(int goodsNo);
@@ -30,6 +32,7 @@ public interface BoardService {
 	int updateGoods(Goods goods, List<MultipartFile> images, String webPath, String filePath, String deleteList) throws IllegalStateException, IOException;
 	
 	int deleteGoods(Goods goods);
+
 
 
 

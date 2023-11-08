@@ -64,6 +64,15 @@
 		ORDER BY A.GOODS_NO DESC
 	</select>
 	
+	<select id="selectSearchList" resultMap="goods_rm">
+		SELECT A.GOODS_NO , A.USER_NO , A.CATEGORY_NO , A.GOODS_TITLE , A.GOODS_PRICES , A.GOODS_STATUS ,
+				IFNULL(B.FILE_PATH, '/resources/images/board/dummy3.png') THUMBNAIL
+		FROM goods A
+		LEFT JOIN (SELECT GOODS_NO, FILE_PATH FROM files f WHERE FILE_ORDER = 0) B ON A.GOODS_NO = B.GOODS_NO 
+		WHERE A.GOODS_TITLE LIKE CONCAT( '%' , #{val} , '%' )
+		ORDER BY A.GOODS_NO DESC
+	</select>
+	
 	<update id="updateViewCount" parameterType="_int">
 		UPDATE goods
 		SET VIEW_COUNT = VIEW_COUNT + 1

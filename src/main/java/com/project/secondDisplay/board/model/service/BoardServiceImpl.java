@@ -41,6 +41,12 @@ public class BoardServiceImpl implements BoardService {
 
 		return map;
 	}
+	
+	@Override
+	public List<Goods> selectSearchList(String val, int cp) {
+		
+		return dao.selectSearchList(val, cp);
+	}
 
 	@Override
 	public void updateViewCount(int goodsNo) {

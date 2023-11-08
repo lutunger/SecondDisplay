@@ -23,9 +23,17 @@ public class BoardDAO {
 	}
 
 	public List<Goods> selectGoodsList(int categoryNo, int cp) {
-		RowBounds rowBounds = new RowBounds(cp, 20);
+		RowBounds rowBounds = new RowBounds((cp - 1) * 20, 20);
 		return sqlSession.selectList("boardMapper.selectGoodsList", categoryNo, rowBounds);
 	}
+	
+	public List<Goods> selectSearchList(String val, int cp) {
+		
+		RowBounds rowBounds = new RowBounds((cp - 1) * 20, 20);
+		
+		return sqlSession.selectList("boardMapper.selectSearchList", val, rowBounds);
+	}
+
 
 	public int updateViewCount(int goodsNo) {
 		return sqlSession.update("boardMapper.updateViewCount",goodsNo);
@@ -82,6 +90,7 @@ public class BoardDAO {
 	public int deleteTarget(Goods goods) {
 		return sqlSession.delete("boardMapper.deleteTarget", goods);
 	}
+
 
 
 

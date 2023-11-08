@@ -31,8 +31,8 @@
 		<a class="navbar-brand" href="/">
 			<div>Second<i class="fa-solid fa-shirt"></i>Display</div>
 		</a>
-		<form class="d-flex my-auto" role="search"\>
-			<input class="form-control me-2" type="search" placeholder="상품명 검색" aria-label="Search">
+		<form class="d-flex my-auto" action="/search" method="get">
+			<input class="form-control me-2" type="search" name="val">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 		<div>
