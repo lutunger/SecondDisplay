@@ -6,6 +6,14 @@ http://secondp.store/
 
 간단한 중고 거래 사이트를 구현했습니다.
 
+# 개발환경
+- JDK 11.0.2
+- IDE - STS 3.9.18 , VSCODE
+- mySQL 8 version(AWS RDS)
+- freamwork - spring
+- library - bootStrap, jQeury, fontAwesome, websocket(sockJS)
+- 배포 - AWS Elastic Beanstalk, cafe24 DNS
+
 # 구현기능
 1. 회원기능(로그인, 회원가입, 개인정보수정)
 2. 게시판기능(글 조회, 등록, 수정, 삭제)
