@@ -221,7 +221,6 @@ send.addEventListener("click", () => {
 
 chattingSock.onmessage = function(e) {
 	const msg = JSON.parse(e.data);
-	console.log(msg);
 
     const messageListDisplay = document.getElementById("messageList");
 

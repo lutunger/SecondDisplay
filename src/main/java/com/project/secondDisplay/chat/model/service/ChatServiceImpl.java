@@ -41,7 +41,6 @@ public class ChatServiceImpl implements ChatService{
 	@Override
 	public List<Message> selectMessageList(Map<String, Object> paramMap) {
         List<Message> messageList = dao.selectMessageList(  Integer.parseInt( String.valueOf(paramMap.get("chatRoomNo") )));
-        
         return messageList;
 	}
 	
