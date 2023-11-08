@@ -14,3 +14,5 @@ http://secondp.store/
 # 개발기간
 - 2023.10.23 ~ 2023.11.08
 
+# 자세한 프로젝트 소개
+https://field-lark-c3c.notion.site/SecondDIsplay-73a9cead65384210a4b208334f349894?pvs=4
